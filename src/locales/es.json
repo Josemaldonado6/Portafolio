@@ -4,89 +4,93 @@
       "greeting": "Hola, soy",
       "name": "José de Jesús Maldonado Ordaz",
       "role": "Ingeniero en Desarrollo y Gestión de Software",
-      "status": "Por titularme"
+      "status": "Candidato a Título (Abril 2026)"
     },
     "about": {
-      "title": "Sobre Mí",
+      "title": "Perfil Profundo",
       "location": "Coatzacoalcos, Veracruz, México."
     },
     "mobility": {
-      "title": "Movilidad Global",
-      "availability": "Disponibilidad Inmediata",
-      "relocation": "Dispuesto a reubicación internacional",
-      "visa": "Visa B1/B2 (USA) Activa",
-      "passport": "Pasaporte Mexicano Activo"
+      "title": "Movilidad Transfronteriza",
+      "availability": "Incorporación Inmediata",
+      "relocation": "Disponibilidad de Reubicación Global",
+      "visa": "Visa B1/B2 (USA) Vigente",
+      "passport": "Pasaporte Mexicano Vigente"
     },
     "languages": {
-      "title": "Idiomas",
-      "es": "Español (Nativo)",
-      "en": "Inglés (Conversacional B2 / Lectura Técnica)"
+      "title": "Capacidades Lingüísticas",
+      "es": "Español (Lengua Materna)",
+      "en": "Inglés (Nivel B2 / Especialidad en Documentación Técnica)"
     },
     "education": {
-      "title": "Educación Tecnológica",
+      "title": "Formación de Vanguardia",
       "uni": "Universidad Tecnológica del Sureste de Veracruz",
-      "degree1": "Ingeniería en Desarrollo de Software",
+      "degree1": "Ingeniería en Desarrollo y Gestión de Software",
       "date1": "Ago 2024 - Abr 2026",
-      "degree2": "TSU Desarrollo Multiplataforma",
+      "degree2": "TSU en Desarrollo de Software Multiplataforma",
       "date2": "Ago 2022 - Ago 2024"
     },
     "skills": {
-      "title": "Dominio Tecnológico",
+      "title": "Ecosistema Tecnológico",
       "list": [
-        "TypeScript", "React 18", "Laravel 11", "AWS", 
-        "Google Cloud", "GitHub CI/CD", 
-        "Data Synth & LLMs", "Integración IA (YOLO/SAM)", 
-        "Hardware-Software Edge", "Product Management"
+        "TypeScript", "React 18", "Laravel 11", "AWS Cloud", 
+        "Google Cloud Platform", "GitHub Actions CI/CD", 
+        "Data Synthetic & LLMs", "IA Computer Vision (YOLO/SAM)", 
+        "Edge Computing Hardware", "Product Design Management"
       ]
     },
     "contact": {
-      "title": "Impulsando el Futuro del Software.",
+      "title": "¿Construimos el Próximo Unicornio?",
       "phone": "+52 9211002299",
       "email": "joseutsv@gmail.com"
     },
     "case_studies": {
-      "title": "Proyectos & Experiencia Profesional",
+      "title": "Hitos de Ingeniería y Casos de Estudio",
       "vecode": {
-        "name": "Vecode — Reconstrucción de Plataforma Portuaria",
-        "role": "Ingeniero Backend & Frontend (Full-Stack)",
+        "name": "Vecode — Re-Arquitectura Crítica Portuaria",
+        "role": "Lead Full-Stack Engineer",
         "company": "Pro-Agroindustria",
         "date": "Enero - Abril 2026",
-        "context": "Transformación Radical en 4 Meses: Recibí un sistema operativo crítico basado en PHP procedimental (monolito de +110 archivos) con latencias severas y código inseguro. Mi labor fue reconstruirlo desde cero utilizando arquitectura moderna para garantizar pesajes e inventarios en tiempo real.",
-        "p1_title": "⚡ Arquitectura desde Cero (Laravel 11)",
-        "p1_desc": "Diseñé una API REST moderna eliminando por completo el código 'Spaghetti'. Implementé patrones de diseño sólidos (MVC), sistema de roles/permisos y abstracción profunda con Eloquent ORM. Pasamos de inyecciones SQL a una base de código mantenible y segura.",
-        "p2_title": "🚀 Frontend SPA (React 18 & Inertia)",
-        "p2_desc": "Construí la interfaz como una SPA fluida. Eliminamos las múltiples recargas de página del sistema anterior, logrando una experiencia de usuario inmediata y estados globales limpios con React y TailwindCSS.",
-        "p3_title": "🛠️ CI/CD & Eficiencia Operativa",
-        "p3_desc": "Migré la infraestructura a Ubuntu Local con CloudPanel y automaticé despliegues vía GitHub Actions. Esto redujo los costos de operación y tiempos de carga a la mitad (vs AWS/Azure), garantizando alta disponibilidad portuaria 24/7.",
+        "context": "Transformación Radical: Recibí una infraestructura operativa crítica basada en PHP procedimental (monolito de +110 archivos) con latencias inaceptables. Realicé una reconstrucción **desde cero** en 4 meses, migrando a una arquitectura de servicios moderna para garantizar pesajes e inventarios en tiempo real.",
+        "p1_title": "⚡ Arquitectura de Alto Rendimiento",
+        "p1_desc": "Eliminé el 'Código Spaghetti' heredado, diseñando una API REST robusta en Laravel 11. Implementé patrones de diseño MVC, seguridad avanzada contra inyecciones y abstracción de datos vía Eloquent, logrando un sistema escalable y mantenible.",
+        "p2_title": "🚀 Experiencia SPA Fluida",
+        "p2_desc": "Desarrollé la interfaz completa en React 18 & Inertia.js. Optimizamos la latencia de usuario final eliminando las recargas de página constantes del sistema anterior, integrando TailwindCSS para un diseño industrial moderno.",
+        "p3_title": "🛠️ Modernización de Infraestructura",
+        "p3_desc": "Migré la operación a servidores Linux optimizados con CloudPanel y automaticé la cadena de suministro de software mediante GitHub Actions, reduciendo los costos cloud y tiempos de respuesta en un 50%.",
         "visuals": {
-            "before": "Legado (PHP Procedimental)",
-            "after": "Moderno (React/Laravel Architecture)"
+            "before": "Sistema Legado (PHP 2000s)",
+            "after": "Sistema Moderno (React Stack 2026)"
         }
       },
       "stealth": {
-        "name": "Startup Deep Tech en Modo Oculto (Stealth)",
-        "role": "Fundador e Ingeniero Principal",
-        "company": "Plataforma Autónoma de Inspección Marítima (Confidencial)",
-        "date": "Fundada en 2025 – Presente",
-        "context": "El Origen: Este proyecto nació durante una reunión operativa portuaria al detectar que la certificación de peso de buques (Draft Survey) es un proceso centenario, manual y de extremo riesgo vital/financiero. Fundé la startup para reemplazar este proceso totalmente con un flujo autónomo de IA y drones de precisión sub-centimétrica en segundos.",
-        "p1_title": "🧠 Motor de Visión Computacional e IA",
-        "p1_desc": "Diseñé un pipeline integrando redes neuronales (Detección de Objetos, Segmentación de Instancias, OCR Industrial) para procesar marcas de calado bajo óxido y oleaje. Desarrollé el núcleo IP: un algoritmo basado en física con transformadas matemáticas que reconstruye de forma autónoma el 'Nivel Verdadero de Agua'. Entrené el modelo creando datos sintéticos mediante IA Generativa.",
-        "p2_title": "⚙️ Backend, API y Edge Computing",
-        "p2_desc": "Arquitectura modular asíncrona: orquestación de inspecciones, modelado físico, generación PDF fotorrealista evidencial y telemetría OSINT. Implementé una estrategia de datos 'offline-first' y sincronización híbrida (Edge-Cloud) contenerizando todo el stack técnico.",
-        "p3_title": "🖥️ Frontend y Diseño UI/UX",
-        "p3_desc": "Desarrollo completo como SPA transicional/PWA con herramientas de telemetría en tiempo real, ingesta drag-and-drop de drones y un mapa digital portuario, optimizado para tablets a bordo.",
-        "p4_title": "📦 Estrategia y Negocio",
-        "p4_desc": "Modelado B2B SaaS Enterprise, proyecciones TAM/SAM/SOM y rutas de certificación técnica (DNV). Mi diferenciador es poseer fluidez del dominio logístico naviero combinada con la capacidad comprobada de ingeniería Full-Stack de alto estrés.",
+        "name": "Startup Deep Tech — Visión Artificial Autónoma",
+        "role": "Founder & Lead Algorithm Engineer",
+        "company": "Sistema Autónomo de Inspección Marítima",
+        "date": "2025 – Presente",
+        "context": "Disrupción en el Draft Survey: El proceso centenario de certificación de peso de buques es peligroso y manual. Fundé esta startup para automatizarlo totalmente mediante IA y drones, logrando precisión sub-centimétrica en segundos y eliminando riesgos humanos.",
+        "p1_title": "🧠 Motor de Visión Computerizada Propietario",
+        "p1_desc": "Pipeline de IA que integra segmentación de instancias y OCR industrial para leer marcas de calado bajo óxido y oleaje. Desarrollé el algoritmo físico que reconstruye el 'Nivel Verdadero del Agua' mediante transformadas matemáticas avanzadas.",
+        "p2_title": "⚙️ Hardware-Edge & Hybrid Sync",
+        "p2_desc": "Estrategia 'Offline-First' para operación en alta mar. El procesado de IA ocurre en el borde (Edge Computing) con sincronización asíncrona hacia la nube cuando hay conectividad, garantizando operatividad total sin internet.",
+        "p3_title": "🖥️ Dashboard Táctico de Misión",
+        "p3_desc": "Interfaz táctica diseñada para entornos de alto estrés. Control de drones integrado, telemetría en tiempo real y generación automática de certificados legales fotorrealistas únicos en la industria.",
+        "p4_title": "📦 Estrategia de Producto Escalable",
+        "p4_desc": "Modelado de negocio SaaS Enterprise con certificaciones técnicas DNV en proceso. He unido la fluidez del dominio logístico portuario con ingeniería Full-Stack de alto nivel para crear una solución única en el mercado.",
         "expertise_table": {
-          "title": "Resumen de Áreas de Experiencia",
-          "headers": ["Dominio", "Capacidades Evaluables"],
+          "title": "Matriz de Competencias Técnicas",
+          "headers": ["Dominio", "Capacidades de Ingeniería"],
           "rows": [
-            { "domain": "Ingeniería de IA / Visión", "capabilities": "Detección de Objetos, Segmentación de Instancias, OCR Industrial, Visión Artificial, Datos Sintéticos." },
-            { "domain": "Analítica y Señales", "capabilities": "Algoritmos estadísticos, cancelación de ruido, validación física temporal." },
-            { "domain": "Ingeniería Backend", "capabilities": "Arquitecturas empresariales asíncronas, ORMs relacionales, Múltiples Migraciones, REST APIs robustas (JWT)." },
-            { "domain": "Ingeniería Frontend", "capabilities": "Arquitectura SPA/Frameworks Modernos, PWA Offline-First, i18n, Interfaces Dinámicas." },
-            { "domain": "Infraestructura", "capabilities": "Contenerización, Despliegues inmutables, Pipelines CI/CD, Edge-Cloud Hybrid." }
+            { "domain": "IA / Machine Learning", "capabilities": "Segmentación, Detección, OCR Industrial, Datos Sintéticos (GAN/Diffusion)." },
+            { "domain": "Procesamiento de Señales", "capabilities": "Cancelación de ruido físico, validación estadística, modelado dinámico." },
+            { "domain": "Arquitectura Backend", "capabilities": "Sistemas asíncronos, APIs REST Seguras (JWT), Migraciones de Gran Escala." },
+            { "domain": "Ingeniería de Interfaz", "capabilities": "SPAs de Alta Reactividad, PWA Offline-First, i18n, UX Industrial." },
+            { "domain": "DevOps & Cloud", "capabilities": "Docker/Kubernetes, GitHub Actions, Edge-Cloud Hybrid." }
           ]
+        },
+        "visuals": {
+            "screen1": "Interfaz de Análisis de Calado IA",
+            "screen2": "Planificador Táctico de Misión (Dron)"
         }
       }
     }

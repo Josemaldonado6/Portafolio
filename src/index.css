@@ -1,21 +1,22 @@
 :root {
-  --bg-color: #050511;
+  --bg-color: #02020a;
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --accent-cyan: #38bdf8;
   --accent-blue: #3b82f6;
   --accent-purple: #8b5cf6;
-  --glass-bg: rgba(17, 24, 39, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent-neon: #a855f7;
+  --glass-bg: rgba(10, 10, 25, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --glass-highlight: rgba(255, 255, 255, 0.05);
+  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
 }
 
-/* data-theme overrides for manual toggle (light mode support, though dark is highly recommended) */
 [data-theme='light'] {
-  --bg-color: #f1f5f9;
+  --bg-color: #f8fafc;
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --accent-cyan: #0284c7;
+  --accent-cyan: #0ea5e9;
   --accent-blue: #2563eb;
   --accent-purple: #7c3aed;
   --glass-bg: rgba(255, 255, 255, 0.7);
@@ -25,159 +26,178 @@
 
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 320px;
-  min-height: 100vh;
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: 'Space Grotesk', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-weight: 300;
   line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #root {
-  flex: 1;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-/* Typography Enhancements */
-h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 1rem 0;
-  line-height: 1.2;
+/* --- Typography Unicorn Grade --- */
+h1, h2, h3, h4 {
+  margin: 0;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 50%, var(--accent-blue) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
+  animation: hue-rotate 10s infinite linear;
 }
 
-/* Bento Box Grid System */
+@keyframes hue-rotate {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+}
+
+/* --- Bento Grid Evolution --- */
 .bento-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(180px, auto);
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(100px, auto);
   gap: 1.5rem;
   width: 100%;
-  max-width: 1200px;
-  margin: 10vh auto;
-  padding: 0 2rem;
-  position: relative;
+  max-width: 1400px;
+  margin: 5vh auto;
+  padding: 2rem;
   z-index: 10;
 }
 
-/* Responsive Grid Adjustments */
-@media (max-width: 1024px) {
-  .bento-container { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 768px) {
-  .bento-container { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .bento-container { grid-template-columns: 1fr; }
-}
-
-/* Glassmorphism Bento Card */
+/* --- Bento Card Premium --- */
 .bento-card {
   position: relative;
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 2rem;
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4);
+  border-radius: 32px;
+  padding: 2.5rem;
+  box-shadow: var(--card-shadow);
   overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1), border-color 0.4s ease;
   display: flex;
   flex-direction: column;
-  /* Smooth transition for hover effects handled by Framer Motion, but base CSS here */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Internal light highlight for that premium Apple-like dark mode glass feel */
-.bento-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
-  opacity: 0.5;
 }
 
 .bento-card:hover {
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(59, 130, 246, 0.15);
+  transform: translateY(-8px);
 }
 
-/* Utility layout classes */
-.col-span-1 { grid-column: span 1; }
-.col-span-2 { grid-column: span 2; }
-.col-span-3 { grid-column: span 3; }
+/* Glass Inner Glow Overlay */
+.bento-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bento-card:hover::after {
+  opacity: 1;
+}
+
+/* Spacing Utils */
+.col-span-12 { grid-column: span 12; }
+.col-span-8 { grid-column: span 8; }
+.col-span-6 { grid-column: span 6; }
 .col-span-4 { grid-column: span 4; }
-.row-span-1 { grid-row: span 1; }
+.col-span-3 { grid-column: span 3; }
 .row-span-2 { grid-row: span 2; }
 
-@media (max-width: 768px) {
-  .col-span-2, .col-span-3, .col-span-4 { grid-column: span 2; }
+@media (max-width: 1024px) {
+  .col-span-8, .col-span-6, .col-span-4, .col-span-3 { grid-column: span 6; }
 }
-@media (max-width: 480px) {
-  .col-span-2, .col-span-3, .col-span-4 { grid-column: span 1; }
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-color);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+@media (max-width: 640px) {
+  .col-span-8, .col-span-6, .col-span-4, .col-span-3 { grid-column: span 12; }
 }
 
-/* Buttons */
-button {
-  background: rgba(255, 255, 255, 0.05);
+/* --- Horizontal Scroll Container --- */
+.horizontal-scroll-section {
+  width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 2rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.horizontal-scroll-section::-webkit-scrollbar { display: none; }
+
+.horizontal-content-wrapper {
+  display: inline-flex;
+  gap: 2rem;
+  padding: 0 4rem;
+}
+
+/* --- Project Visuals (Before/After & New) --- */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.visual-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
   border: 1px solid var(--glass-border);
-  color: var(--text-primary);
-  padding: 0.6rem 1.2rem;
-  border-radius: 12px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.3s ease;
+}
+
+.visual-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.visual-item:hover {
+  transform: scale(1.02);
+  z-index: 2;
+}
+
+.visual-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
   backdrop-filter: blur(10px);
 }
 
-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-/* Expertise Table */
+/* --- Expertise Table --- */
 .expertise-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.5rem;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
+  margin-top: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--glass-border);
 }
@@ -185,25 +205,42 @@ button:hover {
 .expertise-table th {
   background: rgba(255, 255, 255, 0.05);
   text-align: left;
-  padding: 1rem;
+  padding: 1.2rem;
   font-weight: 600;
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--glass-border);
+  color: var(--accent-cyan);
 }
 
 .expertise-table td {
-  padding: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
-.expertise-table tr:last-child td {
-  border-bottom: none;
-}
-
-.expertise-table td:first-child {
+/* --- Buttons & Inputs --- */
+button {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 100px;
   font-weight: 600;
-  color: var(--accent-cyan);
-  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
 }
+
+button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  transform: scale(1.05);
+}
+
+/* --- Scrollbar Evolution --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-color); }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.4); }

@@ -6,18 +6,37 @@ import { motion } from 'framer-motion';
 import { Globe, Plane, GraduationCap, Code2, MapPin, Mail, Phone, Briefcase, CheckCircle2 } from 'lucide-react';
 import { ThemeProvider } from './ThemeContext';
 
-// Reusable animated Bento Card wrapper
-const BentoCard = ({ children, className, delay = 0, style }: { children: React.ReactNode, className?: string, delay?: number, style?: React.CSSProperties }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay, type: "spring", bounce: 0.4 }}
-    className={`bento-card ${className || ''}`}
-    style={style}
-  >
-    {children}
-  </motion.div>
-);
+import { useState, useEffect } from 'react';
+
+// Reusable animated Bento Card wrapper with Mouse Glow
+const BentoCard = ({ children, className, delay = 0, style }: { children: React.ReactNode, className?: string, delay?: number, style?: React.CSSProperties }) => {
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePos({ x, y });
+  };
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={`bento-card ${className || ''}`}
+      style={{ 
+        ...style,
+        '--mouse-x': `${mousePos.x}%`,
+        '--mouse-y': `${mousePos.y}%`
+      } as any}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 function Controls() {
   const { i18n } = useTranslation();
@@ -58,18 +77,25 @@ function PortfolioContent() {
             
             <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.8} />
             
-            <Float speed={2.5} rotationIntensity={1} floatIntensity={1.5}>
+            <Float speed={3} rotationIntensity={2} floatIntensity={2}>
               <mesh>
-                <icosahedronGeometry args={[2.5, 4]} />
+                <icosahedronGeometry args={[2.8, 15]} />
                 <MeshDistortMaterial 
-                  color="#020617" 
-                  emissive="#0f172a"
-                  emissiveIntensity={0.5}
-                  roughness={0.1} 
+                  color="#38bdf8" 
+                  emissive="#1e1b4b"
+                  emissiveIntensity={2}
+                  roughness={0} 
                   metalness={1} 
-                  distort={0.25} 
-                  speed={2} 
+                  distort={0.4} 
+                  speed={4} 
+                  transparent
+                  opacity={0.9}
                 />
+              </mesh>
+              {/* Inner Core */}
+              <mesh scale={0.8}>
+                <icosahedronGeometry args={[1, 1]} />
+                <meshStandardMaterial color="#8b5cf6" emissive="#8b5cf6" emissiveIntensity={5} />
               </mesh>
             </Float>
           </Suspense>
@@ -180,137 +206,98 @@ function PortfolioContent() {
           </div>
         </BentoCard>
 
-        {/* CASE STUDIES FULL WIDTH */}
-        <BentoCard className="col-span-4" delay={0.6}>
-           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem' }}>
-            <Briefcase color="var(--accent-cyan)" />
-            <h3 style={{ margin: 0, fontSize: '1.8rem' }}>{t('bento.case_studies.title')}</h3>
+        {/* HORIZONTAL CASE STUDIES SHOWCASE */}
+        <div className="col-span-12" style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', padding: '0 1rem' }}>
+            <Briefcase color="var(--accent-cyan)" size={32} />
+            <h3 style={{ fontSize: '2.5rem', fontWeight: 800 }}>{t('bento.case_studies.title')}</h3>
           </div>
 
-          {/* 1. VECODE (FIRST) */}
-          <div style={{ borderLeft: '2px solid var(--accent-cyan)', paddingLeft: '2rem', marginLeft: '0.5rem', marginBottom: '4rem' }}>
-            <h4 style={{ fontSize: '1.6rem', margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
-              {t('bento.case_studies.vecode.name')}
-            </h4>
-            <div style={{ fontSize: '1.2rem', color: 'var(--accent-purple)', marginBottom: '0.2rem', fontWeight: 600 }}>
-              {t('bento.case_studies.vecode.role')}
-            </div>
-            <div style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', display: 'flex', gap: '1rem' }}>
-              <span>{t('bento.case_studies.vecode.company')}</span>
-              <span>•</span>
-              <span>{t('bento.case_studies.vecode.date')}</span>
-            </div>
-            
-            <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem', fontStyle: 'italic', borderLeft: '3px solid rgba(255,255,255,0.1)', paddingLeft: '1rem' }}>
-              {t('bento.case_studies.vecode.context')}
-            </p>
+          <div className="horizontal-scroll-section">
+            <div className="horizontal-content-wrapper">
+              
+              {/* VECODE CARD */}
+              <div style={{ width: 'min(85vw, 900px)', whiteSpace: 'normal' }}>
+                <BentoCard delay={0.1} style={{ height: '100%' }}>
+                  <div style={{ borderLeft: '3px solid var(--accent-cyan)', paddingLeft: '2rem' }}>
+                    <h4 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.name')}</h4>
+                    <div style={{ fontSize: '1.2rem', color: 'var(--accent-purple)', fontWeight: 600 }}>{t('bento.case_studies.vecode.role')}</div>
+                    <div style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>{t('bento.case_studies.vecode.company')} • {t('bento.case_studies.vecode.date')}</div>
+                    
+                    <p style={{ fontSize: '1.1rem', fontStyle: 'italic', opacity: 0.8, marginBottom: '2rem' }}>{t('bento.case_studies.vecode.context')}</p>
+                    
+                    <div className="comparison-grid">
+                      <div className="visual-item" style={{ border: '2px solid #722f37' }}>
+                        <img src="/assets/projects/vecode/old_auth.png" alt="Legacy" />
+                        <span className="visual-label" style={{ background: '#722f37', color: 'white' }}>{t('bento.case_studies.vecode.visuals.before')}</span>
+                      </div>
+                      <div className="visual-item" style={{ border: '2px solid var(--accent-cyan)' }}>
+                        <img src="/assets/projects/vecode/new_dashboard.png" alt="Modern" />
+                        <span className="visual-label" style={{ background: 'var(--accent-cyan)', color: 'black' }}>{t('bento.case_studies.vecode.visuals.after')}</span>
+                      </div>
+                    </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p1_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p1_desc')}</p>
-              </div>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-purple)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p2_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p2_desc')}</p>
-              </div>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p3_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p3_desc')}</p>
-              </div>
-            </div>
-
-            {/* BEFORE & AFTER VISUALS */}
-            <div style={{ marginTop: '2rem' }}>
-               <h5 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '1.5rem' }}>Visual Transformation (Before & After)</h5>
-               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                  {/* OLD SYSTEM */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                     <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', border: '2px solid #722f37' }}>
-                        <img src="/assets/projects/vecode/old_auth.png" alt="Legacy Auth" style={{ width: '100%', display: 'block' }} />
-                        <span style={{ position: 'absolute', top: '10px', left: '10px', background: '#722f37', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 600 }}>{t('bento.case_studies.vecode.visuals.before')}</span>
-                     </div>
-                     <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', border: '2px solid #722f37' }}>
-                        <img src="/assets/projects/vecode/old_module.png" alt="Legacy Module" style={{ width: '100%', display: 'block' }} />
-                        <span style={{ position: 'absolute', top: '10px', left: '10px', background: '#722f37', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 600 }}>{t('bento.case_studies.vecode.visuals.before')}</span>
-                     </div>
+                    <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+                      {[1,2,3].map(i => (
+                        <div key={i}>
+                          <h5 style={{ color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t(`bento.case_studies.vecode.p${i}_title`)}</h5>
+                          <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>{t(`bento.case_studies.vecode.p${i}_desc`)}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  {/* NEW SYSTEM */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                     <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', border: '2px solid var(--accent-cyan)' }}>
-                        <img src="/assets/projects/vecode/new_dashboard.png" alt="New Dashboard" style={{ width: '100%', display: 'block' }} />
-                        <span style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--accent-cyan)', color: 'black', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700 }}>{t('bento.case_studies.vecode.visuals.after')}</span>
-                     </div>
-                     <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', border: '2px solid var(--accent-cyan)' }}>
-                        <img src="/assets/projects/vecode/new_scale.png" alt="New Scale" style={{ width: '100%', display: 'block' }} />
-                        <span style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--accent-cyan)', color: 'black', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700 }}>{t('bento.case_studies.vecode.visuals.after')}</span>
-                     </div>
+                </BentoCard>
+              </div>
+
+              {/* STEALTH TECH CARD */}
+              <div style={{ width: 'min(85vw, 1100px)', whiteSpace: 'normal' }}>
+                <BentoCard delay={0.2} style={{ height: '100%', background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(56, 189, 248, 0.05))' }}>
+                  <div style={{ borderLeft: '3px solid var(--accent-purple)', paddingLeft: '2rem' }}>
+                    <h4 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{t('bento.case_studies.stealth.name')}</h4>
+                    <div style={{ fontSize: '1.2rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>{t('bento.case_studies.stealth.role')}</div>
+                    <div style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>{t('bento.case_studies.stealth.company')} • {t('bento.case_studies.stealth.date')}</div>
+                    
+                    <p style={{ fontSize: '1.1rem', fontStyle: 'italic', opacity: 0.8, marginBottom: '2rem' }}>{t('bento.case_studies.stealth.context')}</p>
+
+                    {/* NEW STEALTH IMAGES */}
+                    <div className="comparison-grid" style={{ gridTemplateColumns: '1fr 1.2fr' }}>
+                      <div className="visual-item" style={{ border: '1px solid var(--accent-purple)' }}>
+                        <img src="/assets/projects/stealth/stealth_drone.png" alt="Drone Pilot" style={{ height: '350px' }} />
+                        <span className="visual-label" style={{ background: 'var(--accent-purple)', color: 'white' }}>{t('bento.case_studies.stealth.visuals.screen2')}</span>
+                      </div>
+                      <div className="visual-item" style={{ border: '1px solid var(--accent-purple)' }}>
+                        <img src="/assets/projects/stealth/stealth_draft.png" alt="Draft Analysis" style={{ height: '350px' }} />
+                        <span className="visual-label" style={{ background: 'var(--accent-purple)', color: 'white' }}>{t('bento.case_studies.stealth.visuals.screen1')}</span>
+                      </div>
+                    </div>
+
+                    <div style={{ marginTop: '2rem' }}>
+                      <h5 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>{t('bento.case_studies.stealth.expertise_table.title')}</h5>
+                      <div style={{ overflowX: 'auto' }}>
+                        <table className="expertise-table">
+                          <thead>
+                            <tr>
+                              {((t('bento.case_studies.stealth.expertise_table.headers', { returnObjects: true }) as string[]) || []).map((h, i) => <th key={i}>{h}</th>)}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {((t('bento.case_studies.stealth.expertise_table.rows', { returnObjects: true }) as any[]) || []).map((row, idx) => (
+                              <tr key={idx}>
+                                <td>{row.domain}</td>
+                                <td>{row.capabilities}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
-               </div>
+                </BentoCard>
+              </div>
+
             </div>
           </div>
-
-          {/* 2. STEALTH STARTUP */}
-          <div style={{ borderLeft: '2px solid var(--accent-purple)', paddingLeft: '2rem', marginLeft: '0.5rem' }}>
-            <h4 style={{ fontSize: '1.6rem', margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
-              {t('bento.case_studies.stealth.name')}
-            </h4>
-            <div style={{ fontSize: '1.2rem', color: 'var(--accent-cyan)', marginBottom: '0.2rem', fontWeight: 600 }}>
-              {t('bento.case_studies.stealth.role')}
-            </div>
-            <div style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', display: 'flex', gap: '1rem' }}>
-              <span>{t('bento.case_studies.stealth.company')}</span>
-              <span>•</span>
-              <span>{t('bento.case_studies.stealth.date')}</span>
-            </div>
-            
-            <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem', fontStyle: 'italic', borderLeft: '3px solid rgba(255,255,255,0.1)', paddingLeft: '1rem' }}>
-              {t('bento.case_studies.stealth.context')}
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t('bento.case_studies.stealth.p1_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.stealth.p1_desc')}</p>
-              </div>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-purple)', marginBottom: '0.5rem' }}>{t('bento.case_studies.stealth.p2_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.stealth.p2_desc')}</p>
-              </div>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t('bento.case_studies.stealth.p3_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.stealth.p3_desc')}</p>
-              </div>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-purple)', marginBottom: '0.5rem' }}>{t('bento.case_studies.stealth.p4_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.stealth.p4_desc')}</p>
-              </div>
-            </div>
-
-            {/* EXPERTISE TABLE */}
-            <div style={{ marginTop: '2rem' }}>
-              <h5 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>{t('bento.case_studies.stealth.expertise_table.title')}</h5>
-              <div style={{ overflowX: 'auto' }}>
-                <table className="expertise-table">
-                  <thead>
-                    <tr>
-                      <th>{((t('bento.case_studies.stealth.expertise_table.headers', { returnObjects: true }) as string[]) || [])[0]}</th>
-                      <th>{((t('bento.case_studies.stealth.expertise_table.headers', { returnObjects: true }) as string[]) || [])[1]}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {((t('bento.case_studies.stealth.expertise_table.rows', { returnObjects: true }) as Array<{domain: string, capabilities: string}>) || []).map((row, idx) => (
-                      <tr key={idx}>
-                        <td>{row.domain}</td>
-                        <td>{row.capabilities}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </BentoCard>
+        </div>
 
         {/* CONTACT HERO FOOTER */}
         <BentoCard className="col-span-4" delay={0.7} style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1))', textAlign: 'center' }}>
