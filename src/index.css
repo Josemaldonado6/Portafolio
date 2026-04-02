@@ -6,10 +6,10 @@
   --accent-blue: #3b82f6;
   --accent-purple: #8b5cf6;
   --accent-neon: #a855f7;
-  --glass-bg: rgba(6, 6, 18, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-highlight: rgba(255, 255, 255, 0.08);
-  --card-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8);
+  --glass-bg: rgba(6, 6, 18, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-highlight: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9);
 }
 
 [data-theme='light'] {
@@ -75,24 +75,30 @@ h1, h2, h3, h4 {
   grid-auto-rows: minmax(120px, auto);
   gap: 2rem;
   width: 100%;
-  max-width: 1500px;
-  margin: 10vh auto 5vh;
-  padding: 3rem;
+  max-width: 1600px;
+  margin: 12vh auto 10vh;
+  padding: 0 4rem;
   z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Ensure no element pushes the grid */
+.bento-container > * {
+  min-width: 0;
 }
 
 /* --- Bento Card Premium --- */
 .bento-card {
   position: relative;
   background: var(--glass-bg);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
   border: 1px solid var(--glass-border);
   border-radius: 32px;
-  padding: 2.5rem;
+  padding: 3rem;
   box-shadow: var(--card-shadow);
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
   display: flex;
   flex-direction: column;
 }
@@ -119,18 +125,20 @@ h1, h2, h3, h4 {
 }
 
 /* Spacing Utils */
-.col-span-12 { grid-column: span 12; }
-.col-span-8 { grid-column: span 8; }
-.col-span-6 { grid-column: span 6; }
-.col-span-4 { grid-column: span 4; }
-.col-span-3 { grid-column: span 3; }
-.row-span-2 { grid-row: span 2; }
+.col-span-12 { grid-column: span 12 / span 12; }
+.col-span-8 { grid-column: span 8 / span 8; }
+.col-span-6 { grid-column: span 6 / span 6; }
+.col-span-4 { grid-column: span 4 / span 4; }
+.col-span-3 { grid-column: span 3 / span 3; }
+.col-span-2 { grid-column: span 2 / span 2; }
+.col-span-1 { grid-column: span 1 / span 1; }
+.row-span-2 { grid-row: span 2 / span 2; }
 
-@media (max-width: 1024px) {
-  .col-span-8, .col-span-6, .col-span-4, .col-span-3 { grid-column: span 6; }
+@media (max-width: 1200px) {
+  .col-span-4, .col-span-3, .col-span-2, .col-span-1 { grid-column: span 6 / span 6; }
 }
 @media (max-width: 640px) {
-  .col-span-8, .col-span-6, .col-span-4, .col-span-3 { grid-column: span 12; }
+  .col-span-12, .col-span-8, .col-span-6, .col-span-4, .col-span-3, .col-span-2, .col-span-1 { grid-column: span 12 / span 12; }
 }
 
 /* Horizontal scroll removed for stability */
