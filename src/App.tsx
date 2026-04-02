@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Globe, Plane, GraduationCap, Code2, MapPin, Mail, Phone, Briefcase, CheckCircle2 } from 'lucide-react';
 import { ThemeProvider } from './ThemeContext';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Reusable animated Bento Card wrapper with Mouse Glow
 const BentoCard = ({ children, className, delay = 0, style }: { children: React.ReactNode, className?: string, delay?: number, style?: React.CSSProperties }) => {
