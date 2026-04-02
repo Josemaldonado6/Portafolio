@@ -69,16 +69,15 @@ h1, h2, h3, h4 {
   to { filter: hue-rotate(360deg); }
 }
 
-/* --- Bento Grid Evolution --- */
 .bento-container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(100px, auto);
-  gap: 1.5rem;
+  grid-auto-rows: minmax(120px, auto);
+  gap: 2rem;
   width: 100%;
-  max-width: 1400px;
-  margin: 5vh auto;
-  padding: 2rem;
+  max-width: 1500px;
+  margin: 10vh auto 5vh;
+  padding: 3rem;
   z-index: 10;
 }
 
@@ -135,20 +134,35 @@ h1, h2, h3, h4 {
 
 /* --- Horizontal Scroll Container --- */
 .horizontal-scroll-section {
-  width: 100vw;
+  width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  padding: 2rem 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  padding: 3rem 0;
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
 }
-.horizontal-scroll-section::-webkit-scrollbar { display: none; }
+.horizontal-scroll-section::-webkit-scrollbar { 
+  display: block; 
+  height: 6px;
+}
+.horizontal-scroll-section::-webkit-scrollbar-thumb {
+  background: var(--accent-cyan);
+  border-radius: 10px;
+}
 
 .horizontal-content-wrapper {
   display: inline-flex;
-  gap: 2rem;
-  padding: 0 4rem;
+  gap: 3rem;
+  padding: 0 3rem;
+  min-width: 100%;
+}
+
+.horizontal-project-card {
+  flex-shrink: 0;
+  width: min(85vw, 1000px);
+  white-space: normal;
+  display: block;
 }
 
 /* --- Project Visuals (Before/After & New) --- */
