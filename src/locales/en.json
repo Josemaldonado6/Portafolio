@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Jose de Jesus Maldonado Ordaz",
+    "role": "Software Development Engineer",
+    "location": "Coatzacoalcos, Veracruz, Mexico",
+    "availability": "Immediate Availability - Open to Relocation"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a Mexican Software Development Engineer specialized in high-performance Web and AI solutions. With a US Tourist/Business visa and a Mexican passport, I am ready to relocate and bring my expertise globally."
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "vecode": {
+      "name": "Vecode — Port and Industrial Operations Platform",
+      "company": "Pro-Agroindustria",
+      "date": "Jan – Apr 2026",
+      "subtitle": "Architecting a Scalable Solution",
+      "legacyDesc": "Re-architected an unmaintainable legacy PHP system into a modern, scalable full-stack enterprise application resolving deep technical debt.",
+      "achievements": [
+        "Modern Full-Stack Architecture from Scratch: Developed Backend with Laravel 11 (PHP 8.2), Spatie, queues, and GitHub Actions CI/CD for zero-downtime deployment.",
+        "Frontend with React 18 & TypeScript: Built a fast SPA using Inertia.js avoiding a separate REST API, implementing Headless UI and Framer Motion for premium UX.",
+        "Complex Domain Modeling: Engineered physical port logistics pipelines—from vessel management (ECO/WHISKY) and scale workflows, to atomic lightering (Burreo) operations.",
+        "Crucial Architecture Pivot: Cleanly isolated commercial data (Shipment Orders) from operational data (Loading Orders), decoupling systems and resolving historical folio conflicts.",
+        "Dock Collision Validation & Mathematical Hold Squaring: Programmed preventive algorithms to avoid logistical dock bottlenecks and to ensure tonnage precision.",
+        "Interactive Drill-Down Dashboard: Constructed real-time analytics with multi-level drill-down capabilities for robust operational visibility.",
+        "Database Architecture: Modeled an 88-migration relational schema in MySQL complete with historical traceability, indices optimization, and a 'Shadow Folio' persistence strategy."
+      ],
+      "impact": "Eliminated manual scaling errors, ensured end-to-end truck lifecycle traceability, locked downstream commercial data logically, and delivered real-time analytics for senior management."
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "Email me: joseutsv@gmail.com",
+    "phone": "Call me: +52 9211002299"
+  }
+}

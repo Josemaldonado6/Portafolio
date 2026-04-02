@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "José de Jesús Maldonado Ordaz",
+    "role": "Ingeniero en Desarrollo y Gestión de Software",
+    "location": "Coatzacoalcos, Veracruz, México",
+    "availability": "Disponibilidad Inmediata - Dispuesto a Reubicarse"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "description": "Soy Ingeniero en Desarrollo y Gestión de Software, especializado en la creación de soluciones Web escalables de alto rendimiento y el desarrollo de IA. Cuento con visa americana y pasaporte, siempre preparado para movilidad internacional."
+  },
+  "experience": {
+    "title": "Experiencia Profesional",
+    "vecode": {
+      "name": "Vecode — Plataforma de Operaciones Portuarias e Industriales",
+      "company": "Pro-Agroindustria",
+      "date": "Enero – Abril 2026",
+      "subtitle": "Evolución de Sistema Legado",
+      "legacyDesc": "Sustitución estratégica de un sistema frágil en PHP puro sin arquitectura y con alto riesgo operativo, por una plataforma tecnológica sólida a nivel empresarial.",
+      "achievements": [
+        "Arquitectura Full-Stack Moderna desde cero desarrollada con Laravel 11 (PHP 8.2), sistema de permisos Spatie, workers asíncronos y un pipeline CI/CD en GitHub Actions para despliegue automático cero-downtime a Hostinger.",
+        "Frontend responsivo construido con React 18, TypeScript e Inertia.js, logrando una renderización estilo SPA sin sacrificar ruteo integrado.",
+        "Modelado de Dominio Complejo: orquestación de flujos de buques (ECO/WHISKY), procesos de báscula dual, y operaciones atómicas de burreo con almacén externo que condensan 4 pasos manuales en uno.",
+        "Separación de Datos Crítica: Aislamiento arquitectónico de procesos comerciales frente a operativos, previniendo cuellos de botella y resolviendo el choque de secuencias heredado.",
+        "Soluciones Algorítmicas: Verificación proactiva de colisiones de muelle, y algoritmos de cuadratura matemática estricta (±0.1 TM) para las bodegas.",
+        "Dashboard con Drill-Down interactivo en 3 niveles, brindando métricas analíticas exportables en tiempo real sobre las unidades en circuito.",
+        "Base de Datos: Diseño de esquema relacional con 88 migraciones estratégicas en MySQL, incluyendo trazabilidad de auditoría unificada y una estrategia algorítmica de 'Shadow Folio'."
+      ],
+      "impact": "Erradicación absoluta de errores manuales operativos, consolidación de la trazabilidad desde báscula hasta vigilancia, y bloqueo sistemático para el cumplimiento estricto del tonelaje comercial."
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "email": "Escríbeme: joseutsv@gmail.com",
+    "phone": "Llámame: +52 9211002299"
+  }
+}
