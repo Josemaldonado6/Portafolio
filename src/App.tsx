@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls, Stars, Float, MeshDistortMaterial } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { Globe, Plane, GraduationCap, Code2, MapPin, Mail, Phone, Briefcase, CheckCircle2 } from 'lucide-react';
+import { Globe, Plane, GraduationCap, Code2, MapPin, Briefcase, CheckCircle2 } from 'lucide-react';
 import { ThemeProvider } from './ThemeContext';
 
 import { useState } from 'react';
@@ -100,46 +100,49 @@ function PortfolioContent() {
       {/* Main Bento UI */}
       <div className="bento-container">
         
-        {/* HERO CARD */}
-        <BentoCard className="col-span-4" delay={0.1}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', zIndex: 2 }}>
-            <span style={{ color: 'var(--accent-cyan)', fontWeight: 600, letterSpacing: '2px' }}>{t('bento.hero.greeting').toUpperCase()}</span>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: 0, lineHeight: 1.1 }}>
+        {/* HERO CARD (Master of Engineering) */}
+        <BentoCard className="col-span-6" delay={0.1}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', zIndex: 2 }}>
+            <span style={{ color: 'var(--accent-cyan)', fontWeight: 600, letterSpacing: '3px', fontSize: '0.9rem' }}>{t('bento.hero.greeting').toUpperCase()}</span>
+            <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', marginBottom: 0, fontWeight: 900, lineHeight: 1 }}>
               {t('bento.hero.name')}
             </h1>
-            <h2 className="text-gradient" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
+            <h2 className="text-gradient" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', fontWeight: 700 }}>
               {t('bento.hero.role')}
             </h2>
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' }}>
-              <span style={{ background: 'rgba(56, 189, 248, 0.1)', color: 'var(--accent-cyan)', padding: '0.5rem 1rem', borderRadius: '20px', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle2 size={16} /> {t('bento.hero.status')}
+            <div style={{ display: 'flex', gap: '1.2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+              <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: 'var(--accent-cyan)', padding: '0.6rem 1.4rem', borderRadius: '50px', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '0.6rem', border: '1px solid rgba(56, 189, 248, 0.2)' }}>
+                <CheckCircle2 size={18} /> {t('bento.hero.status')}
               </span>
-              <span style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '0.5rem 1rem', borderRadius: '20px', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <MapPin size={16} /> {t('bento.about.location')}
+              <span style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '0.6rem 1.4rem', borderRadius: '50px', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '0.6rem', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                <MapPin size={18} /> {t('bento.about.location')}
               </span>
             </div>
           </div>
         </BentoCard>
 
-        {/* SKILLS */}
-        <BentoCard className="col-span-2 row-span-2" delay={0.2}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <Code2 color="var(--accent-cyan)" />
-            <h3 style={{ margin: 0, fontSize: '1.5rem' }}>{t('bento.skills.title')}</h3>
+        {/* SKILLS (Tech Ecosystem) */}
+        <BentoCard className="col-span-6 row-span-2" delay={0.2}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
+            <div style={{ background: 'rgba(56, 189, 248, 0.1)', padding: '0.8rem', borderRadius: '12px' }}>
+              <Code2 color="var(--accent-cyan)" size={28} />
+            </div>
+            <h3 style={{ margin: 0, fontSize: '1.8rem', fontWeight: 800 }}>{t('bento.skills.title')}</h3>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
             {Array.isArray(skillsList) && skillsList.map((skill, i) => (
               <motion.span 
                 key={i}
-                whileHover={{ scale: 1.05, backgroundColor: 'rgba(56, 189, 248, 0.2)' }}
+                whileHover={{ scale: 1.08, backgroundColor: 'rgba(56, 189, 248, 0.25)', borderColor: 'var(--accent-cyan)' }}
                 style={{ 
                   background: 'rgba(255, 255, 255, 0.05)', 
                   border: '1px solid rgba(255,255,255,0.1)',
-                  padding: '0.6rem 1.2rem', 
-                  borderRadius: '12px',
-                  fontSize: '0.95rem',
-                  fontWeight: 500,
-                  cursor: 'default'
+                  padding: '0.8rem 1.5rem', 
+                  borderRadius: '16px',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  cursor: 'default',
+                  transition: 'all 0.3s ease'
                 }}
               >
                 {skill}
@@ -148,56 +151,62 @@ function PortfolioContent() {
           </div>
         </BentoCard>
 
-        {/* EDUCATION */}
-        <BentoCard className="col-span-2" delay={0.3}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <GraduationCap color="var(--accent-purple)" />
-            <h3 style={{ margin: 0, fontSize: '1.5rem' }}>{t('bento.education.title')}</h3>
+        {/* EDUCATION (Advanced Engineering) */}
+        <BentoCard className="col-span-6" delay={0.3}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+            <GraduationCap color="var(--accent-purple)" size={28} />
+            <h3 style={{ margin: 0, fontSize: '1.8rem', fontWeight: 800 }}>{t('bento.education.title')}</h3>
           </div>
           
-          <div style={{ marginBottom: '1.5rem' }}>
-            <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--accent-cyan)' }}>{t('bento.education.degree1')}</h4>
-            <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+          <div style={{ marginBottom: '2rem' }}>
+            <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--accent-cyan)', fontSize: '1.3rem', fontWeight: 700 }}>{t('bento.education.degree1')}</h4>
+            <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)', fontSize: '1.1rem' }}>
               <span>{t('bento.education.uni')}</span>
               <span>{t('bento.education.date1')}</span>
             </div>
           </div>
 
           <div>
-            <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text-primary)' }}>{t('bento.education.degree2')}</h4>
-            <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+            <h4 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-primary)', fontSize: '1.2rem', fontWeight: 600 }}>{t('bento.education.degree2')}</h4>
+            <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)', fontSize: '1.05rem' }}>
               <span>{t('bento.education.uni')}</span>
               <span>{t('bento.education.date2')}</span>
             </div>
           </div>
         </BentoCard>
 
-        {/* MOBILITY & LANGUAGES (Split in logical columns) */}
-        <BentoCard className="col-span-1" delay={0.4}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <Plane color="var(--accent-cyan)" />
-            <h3 style={{ margin: 0 }}>{t('bento.mobility.title')}</h3>
+        {/* MOBILITY & LANGUAGES (25/25 split) */}
+        <BentoCard className="col-span-3" delay={0.4}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
+            <Plane color="var(--accent-cyan)" size={24} />
+            <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{t('bento.mobility.title')}</h3>
           </div>
-          <ul style={{ paddingLeft: '1.5rem', margin: 0, color: 'var(--text-secondary)', lineHeight: '1.8' }}>
-            <li><strong style={{ color: 'var(--text-primary)' }}>{t('bento.mobility.availability')}</strong></li>
-            <li>{t('bento.mobility.relocation')}</li>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--text-secondary)', lineHeight: '2.2', fontSize: '1.05rem' }}>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-cyan)' }} />
+              <strong style={{ color: 'var(--text-primary)' }}>{t('bento.mobility.availability')}</strong>
+            </li>
+            <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-purple)' }} />
+              {t('bento.mobility.relocation')}
+            </li>
             <li>{t('bento.mobility.visa')}</li>
             <li>{t('bento.mobility.passport')}</li>
           </ul>
         </BentoCard>
 
-        <BentoCard className="col-span-1" delay={0.5}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <Globe color="var(--accent-purple)" />
-            <h3 style={{ margin: 0 }}>{t('bento.languages.title')}</h3>
+        <BentoCard className="col-span-3" delay={0.5}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
+            <Globe color="var(--accent-purple)" size={24} />
+            <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{t('bento.languages.title')}</h3>
           </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <div style={{ fontWeight: 600 }}>{t('bento.languages.es').split('(')[0]}</div>
-            <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Nativo</div>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{t('bento.languages.es').split('(')[0]}</div>
+            <div style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>{t('bento.languages.es').match(/\((.*)\)/)?.[1] || 'Nativo'}</div>
           </div>
           <div>
-            <div style={{ fontWeight: 600 }}>{t('bento.languages.en').split('(')[0]}</div>
-            <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>B2 Conversacional / Lectura Fluida</div>
+            <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{t('bento.languages.en').split('(')[0]}</div>
+            <div style={{ color: 'var(--accent-cyan)', fontSize: '0.95rem', fontWeight: 600 }}>{t('bento.languages.en').match(/\((.*)\)/)?.[1] || 'B2 Conversacional'}</div>
           </div>
         </BentoCard>
 
@@ -283,15 +292,38 @@ function PortfolioContent() {
           </BentoCard>
         </div>
 
-        {/* CONTACT HERO FOOTER */}
-        <BentoCard className="col-span-4" delay={0.7} style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1))', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t('bento.contact.title')}</h2>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-            <a href={`tel:${t('bento.contact.phone')}`} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.2rem', padding: '1rem 2rem', background: 'var(--glass-bg)', borderRadius: '16px', border: '1px solid var(--glass-border)' }}>
-              <Phone color="var(--accent-cyan)" /> {t('bento.contact.phone')}
+        {/* BENTO FOOTER (Contact & Network) */}
+        <BentoCard className="col-span-8" delay={0.7} style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.05))', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+          <div style={{ textAlign: 'center', maxWidth: '800px' }}>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem', fontWeight: 900, lineHeight: 1.1 }}>{t('bento.contact.title')}</h2>
+            <p style={{ fontSize: '1.4rem', color: 'var(--text-secondary)', marginBottom: '3rem' }}>Escalando productos de logística industrial con ingeniería de precisión.</p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+              <a href={`mailto:${t('bento.contact.email')}`} style={{ background: 'var(--accent-cyan)', color: 'black', padding: '1rem 2.5rem', borderRadius: '50px', fontWeight: 800, fontSize: '1.1rem', transition: 'all 0.3s ease', transform: 'scale(1)', boxShadow: '0 10px 20px rgba(56, 189, 248, 0.3)' }}>
+                Email Me Direct
+              </a>
+              <a href={`tel:${t('bento.contact.phone')}`} style={{ background: 'rgba(255,255,255,0.1)', color: 'white', padding: '1rem 2.5rem', borderRadius: '50px', fontWeight: 700, fontSize: '1.1rem', border: '1px solid var(--glass-border)' }}>
+                WhatsApp Direct
+              </a>
+            </div>
+          </div>
+        </BentoCard>
+
+        <BentoCard className="col-span-4" delay={0.8} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1.5rem' }}>
+          <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.5rem' }}>Networking</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <a href="https://linkedin.com/in/jose-jesus-maldonado" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1.5rem', borderRadius: '24px', border: '1px solid var(--glass-border)', transition: 'all 0.3s ease' }}>
+              <div style={{ background: '#0077b5', padding: '0.5rem', borderRadius: '8px', display: 'flex' }}><Globe size={20} color="white" /></div>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>LinkedIn</div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Profesional Network</div>
+              </div>
             </a>
-            <a href={`mailto:${t('bento.contact.email')}`} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.2rem', padding: '1rem 2rem', background: 'var(--glass-bg)', borderRadius: '16px', border: '1px solid var(--glass-border)' }}>
-              <Mail color="var(--accent-purple)" /> {t('bento.contact.email')}
+            <a href="https://github.com/JoseMaldonado" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1.5rem', borderRadius: '24px', border: '1px solid var(--glass-border)', transition: 'all 0.3s ease' }}>
+              <div style={{ background: '#333', padding: '0.5rem', borderRadius: '8px', display: 'flex' }}><Code2 size={20} color="white" /></div>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>GitHub</div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Technical Portfolio</div>
+              </div>
             </a>
           </div>
         </BentoCard>
