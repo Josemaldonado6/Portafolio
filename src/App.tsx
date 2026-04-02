@@ -187,8 +187,71 @@ function PortfolioContent() {
             <h3 style={{ margin: 0, fontSize: '1.8rem' }}>{t('bento.case_studies.title')}</h3>
           </div>
 
-          {/* 1. STEALTH STARTUP */}
-          <div style={{ borderLeft: '2px solid var(--accent-purple)', paddingLeft: '2rem', marginLeft: '0.5rem', marginBottom: '4rem' }}>
+          {/* 1. VECODE (FIRST) */}
+          <div style={{ borderLeft: '2px solid var(--accent-cyan)', paddingLeft: '2rem', marginLeft: '0.5rem', marginBottom: '4rem' }}>
+            <h4 style={{ fontSize: '1.6rem', margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
+              {t('bento.case_studies.vecode.name')}
+            </h4>
+            <div style={{ fontSize: '1.2rem', color: 'var(--accent-purple)', marginBottom: '0.2rem', fontWeight: 600 }}>
+              {t('bento.case_studies.vecode.role')}
+            </div>
+            <div style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', display: 'flex', gap: '1rem' }}>
+              <span>{t('bento.case_studies.vecode.company')}</span>
+              <span>•</span>
+              <span>{t('bento.case_studies.vecode.date')}</span>
+            </div>
+            
+            <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem', fontStyle: 'italic', borderLeft: '3px solid rgba(255,255,255,0.1)', paddingLeft: '1rem' }}>
+              {t('bento.case_studies.vecode.context')}
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
+              <div>
+                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p1_title')}</h5>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p1_desc')}</p>
+              </div>
+              <div>
+                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-purple)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p2_title')}</h5>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p2_desc')}</p>
+              </div>
+              <div>
+                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p3_title')}</h5>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p3_desc')}</p>
+              </div>
+            </div>
+
+            {/* BEFORE & AFTER VISUALS */}
+            <div style={{ marginTop: '2rem' }}>
+               <h5 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '1.5rem' }}>Visual Transformation (Before & After)</h5>
+               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                  {/* OLD SYSTEM */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                     <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', border: '2px solid #722f37' }}>
+                        <img src="/assets/projects/vecode/old_auth.png" alt="Legacy Auth" style={{ width: '100%', display: 'block' }} />
+                        <span style={{ position: 'absolute', top: '10px', left: '10px', background: '#722f37', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 600 }}>{t('bento.case_studies.vecode.visuals.before')}</span>
+                     </div>
+                     <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', border: '2px solid #722f37' }}>
+                        <img src="/assets/projects/vecode/old_module.png" alt="Legacy Module" style={{ width: '100%', display: 'block' }} />
+                        <span style={{ position: 'absolute', top: '10px', left: '10px', background: '#722f37', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 600 }}>{t('bento.case_studies.vecode.visuals.before')}</span>
+                     </div>
+                  </div>
+                  {/* NEW SYSTEM */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                     <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', border: '2px solid var(--accent-cyan)' }}>
+                        <img src="/assets/projects/vecode/new_dashboard.png" alt="New Dashboard" style={{ width: '100%', display: 'block' }} />
+                        <span style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--accent-cyan)', color: 'black', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700 }}>{t('bento.case_studies.vecode.visuals.after')}</span>
+                     </div>
+                     <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', border: '2px solid var(--accent-cyan)' }}>
+                        <img src="/assets/projects/vecode/new_scale.png" alt="New Scale" style={{ width: '100%', display: 'block' }} />
+                        <span style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--accent-cyan)', color: 'black', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700 }}>{t('bento.case_studies.vecode.visuals.after')}</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+          </div>
+
+          {/* 2. STEALTH STARTUP */}
+          <div style={{ borderLeft: '2px solid var(--accent-purple)', paddingLeft: '2rem', marginLeft: '0.5rem' }}>
             <h4 style={{ fontSize: '1.6rem', margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
               {t('bento.case_studies.stealth.name')}
             </h4>
@@ -244,40 +307,6 @@ function PortfolioContent() {
                     ))}
                   </tbody>
                 </table>
-              </div>
-            </div>
-          </div>
-
-          {/* 2. VECODE */}
-          <div style={{ borderLeft: '2px solid var(--accent-cyan)', paddingLeft: '2rem', marginLeft: '0.5rem' }}>
-            <h4 style={{ fontSize: '1.6rem', margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
-              {t('bento.case_studies.vecode.name')}
-            </h4>
-            <div style={{ fontSize: '1.2rem', color: 'var(--accent-purple)', marginBottom: '0.2rem', fontWeight: 600 }}>
-              {t('bento.case_studies.vecode.role')}
-            </div>
-            <div style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', display: 'flex', gap: '1rem' }}>
-              <span>{t('bento.case_studies.vecode.company')}</span>
-              <span>•</span>
-              <span>{t('bento.case_studies.vecode.date')}</span>
-            </div>
-            
-            <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem', fontStyle: 'italic', borderLeft: '3px solid rgba(255,255,255,0.1)', paddingLeft: '1rem' }}>
-              {t('bento.case_studies.vecode.context')}
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p1_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p1_desc')}</p>
-              </div>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-purple)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p2_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p2_desc')}</p>
-              </div>
-              <div>
-                <h5 style={{ fontSize: '1.1rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.p3_title')}</h5>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>{t('bento.case_studies.vecode.p3_desc')}</p>
               </div>
             </div>
           </div>

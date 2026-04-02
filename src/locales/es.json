@@ -46,6 +46,23 @@
     },
     "case_studies": {
       "title": "Proyectos & Experiencia Profesional",
+      "vecode": {
+        "name": "Vecode — Reconstrucción de Plataforma Portuaria",
+        "role": "Ingeniero Backend & Frontend (Full-Stack)",
+        "company": "Pro-Agroindustria",
+        "date": "Enero - Abril 2026",
+        "context": "Transformación Radical en 4 Meses: Recibí un sistema operativo crítico basado en PHP procedimental (monolito de +110 archivos) con latencias severas y código inseguro. Mi labor fue reconstruirlo desde cero utilizando arquitectura moderna para garantizar pesajes e inventarios en tiempo real.",
+        "p1_title": "⚡ Arquitectura desde Cero (Laravel 11)",
+        "p1_desc": "Diseñé una API REST moderna eliminando por completo el código 'Spaghetti'. Implementé patrones de diseño sólidos (MVC), sistema de roles/permisos y abstracción profunda con Eloquent ORM. Pasamos de inyecciones SQL a una base de código mantenible y segura.",
+        "p2_title": "🚀 Frontend SPA (React 18 & Inertia)",
+        "p2_desc": "Construí la interfaz como una SPA fluida. Eliminamos las múltiples recargas de página del sistema anterior, logrando una experiencia de usuario inmediata y estados globales limpios con React y TailwindCSS.",
+        "p3_title": "🛠️ CI/CD & Eficiencia Operativa",
+        "p3_desc": "Migré la infraestructura a Ubuntu Local con CloudPanel y automaticé despliegues vía GitHub Actions. Esto redujo los costos de operación y tiempos de carga a la mitad (vs AWS/Azure), garantizando alta disponibilidad portuaria 24/7.",
+        "visuals": {
+            "before": "Legado (PHP Procedimental)",
+            "after": "Moderno (React/Laravel Architecture)"
+        }
+      },
       "stealth": {
         "name": "Startup Deep Tech en Modo Oculto (Stealth)",
         "role": "Fundador e Ingeniero Principal",
@@ -61,31 +78,16 @@
         "p4_title": "📦 Estrategia y Negocio",
         "p4_desc": "Modelado B2B SaaS Enterprise, proyecciones TAM/SAM/SOM y rutas de certificación técnica (DNV). Mi diferenciador es poseer fluidez del dominio logístico naviero combinada con la capacidad comprobada de ingeniería Full-Stack de alto estrés.",
         "expertise_table": {
-          "title": "Áreas de Experiencia Demostradas",
+          "title": "Resumen de Áreas de Experiencia",
           "headers": ["Dominio", "Capacidades Evaluables"],
           "rows": [
-            { "domain": "Ingeniería de IA / Visión", "capabilities": "Entrenamiento de modelos de Detección de Objetos, Segmentación de Instancias, OCR Industrial, Visión Artificial, Generación de Data Sintética." },
-            { "domain": "Procesamiento y Analítica", "capabilities": "Algoritmos estadísticos, cancelación de ruido en señales de video, validación de variables físicas temporales." },
-            { "domain": "Ingeniería Backend", "capabilities": "Arquitecturas empresariales asíncronas, ORMs relacionales, Múltiples Migraciones, Diseño de REST APIs robustas y APIs Seguras (JWT)." },
-            { "domain": "Ingeniería Frontend", "capabilities": "Arquitectura SPA/Frameworks Modernos Reactivos, PWA Offline-First, i18n, Interfaces UI/UX Dinámicas e interactivas." },
-            { "domain": "Infraestructura", "capabilities": "Contenerización, Despliegues inmutables, Pipelines CI/CD, Edge-Cloud Hybrid Architecture." },
-            { "domain": "Gestión de Producto", "capabilities": "Product Strategy, Diseño de Roadmap Multianual, Estrategias Monetización, Modelado de Mercados (TAM/SOM)." },
-            { "domain": "Visión Estratégica / Negocio", "capabilities": "Modelado B2B SaaS Corporativo, Propiedad Intelectual, Arquitectura Organizacional de Pitch y Tracción." }
+            { "domain": "Ingeniería de IA / Visión", "capabilities": "Detección de Objetos, Segmentación de Instancias, OCR Industrial, Visión Artificial, Datos Sintéticos." },
+            { "domain": "Analítica y Señales", "capabilities": "Algoritmos estadísticos, cancelación de ruido, validación física temporal." },
+            { "domain": "Ingeniería Backend", "capabilities": "Arquitecturas empresariales asíncronas, ORMs relacionales, Múltiples Migraciones, REST APIs robustas (JWT)." },
+            { "domain": "Ingeniería Frontend", "capabilities": "Arquitectura SPA/Frameworks Modernos, PWA Offline-First, i18n, Interfaces Dinámicas." },
+            { "domain": "Infraestructura", "capabilities": "Contenerización, Despliegues inmutables, Pipelines CI/CD, Edge-Cloud Hybrid." }
           ]
         }
-      },
-      "vecode": {
-        "name": "Vecode",
-        "role": "Ingeniero Backend & Frontend (Full-Stack)",
-        "company": "Pro-Agroindustria",
-        "date": "Enero - Abril 2026",
-        "context": "Heredando un Sistema Legado: Llegué para reemplazar un sistema operativo monolítico crítico construido en PHP plano procedimental comercial (+110 archivos) que gestionaba básculas, órdenes de carga y logística de inventario, el cual sufría latencias inaceptables.",
-        "p1_title": "⚡ Backend & Arquitectura Moderna",
-        "p1_desc": "Diseñé una API REST moderna con Laravel 11. Implementé MVC estricto, sistema de roles/permisos, validaciones de Requests personalizadas y abstracción profunda con Eloquent ORM. Pasamos de un código espagueti con inyecciones SQL a una arquitectura mantenible y segura.",
-        "p2_title": "🚀 Frontend y Experiencia de Usuario",
-        "p2_desc": "Construí el frontend como una Single Page Application con React 18, Vite e Inertia.js usando TailwindCSS. Implementamos estados globales limpios eliminando por completo las múltiples recargas de página del sistema anterior.",
-        "p3_title": "🛠️ Infraestructura CI/CD y DevOps",
-        "p3_desc": "Eliminé el viejo flujo inseguro de carga cPanel/FTP por una arquitectura de Ubuntu Local con CloudPanel. Diseñé un pipeline robusto en GitHub Actions automatizando testing y despliegue continuo al hacer push a la rama principal, reduciendo los costos de operación y tiempos de carga a la mitad."
       }
     }
   }
