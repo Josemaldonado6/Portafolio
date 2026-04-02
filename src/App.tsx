@@ -7,9 +7,10 @@ import { Globe, Plane, GraduationCap, Code2, MapPin, Briefcase, CheckCircle2 } f
 import { ThemeProvider } from './ThemeContext';
 
 import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
-// Reusable animated Bento Card wrapper with Mouse Glow
-const BentoCard = ({ children, className, delay = 0, style }: { children: React.ReactNode, className?: string, delay?: number, style?: React.CSSProperties }) => {
+// Reusable animated Bento Card wrapper with Mouse Glow & Expand functionality
+const BentoCard = ({ children, className, delay = 0, style, id, onExpand }: { children: React.ReactNode, className?: string, delay?: number, style?: React.CSSProperties, id?: string, onExpand?: (id: string) => void }) => {
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -21,6 +22,8 @@ const BentoCard = ({ children, className, delay = 0, style }: { children: React.
 
   return (
     <motion.div
+      layoutId={id}
+      onClick={() => id && onExpand?.(id)}
       onMouseMove={handleMouseMove}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -29,6 +32,7 @@ const BentoCard = ({ children, className, delay = 0, style }: { children: React.
       className={`bento-card ${className || ''}`}
       style={{ 
         ...style,
+        cursor: id ? 'zoom-in' : 'default',
         '--mouse-x': `${mousePos.x}%`,
         '--mouse-y': `${mousePos.y}%`
       } as any}
@@ -56,14 +60,88 @@ function Controls() {
 
 function PortfolioContent() {
   const { t } = useTranslation();
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   
   // Cast arrays safely
   const skillsList = t('bento.skills.list', { returnObjects: true }) as string[];
 
+  const renderExpandedContent = (id: string) => {
+    // This helper renders the same content inside the modal
+    // For simplicity, we repeat the logic based on ID
+    switch(id) {
+      case 'hero': return (
+        <div style={{ padding: '2rem' }}>
+          <h1 style={{ fontSize: '4rem', marginBottom: '1rem' }}>{t('bento.hero.name')}</h1>
+          <h2 className="text-gradient" style={{ fontSize: '2rem' }}>{t('bento.hero.role')}</h2>
+          <p style={{ marginTop: '2rem', fontSize: '1.2rem', color: 'var(--text-secondary)' }}>Especialista en arquitecturas Full-Stack críticas y sistemas de Visión Artificial Autónoma.</p>
+        </div>
+      );
+      case 'skills': return (
+        <div>
+          <h3 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t('bento.skills.title')}</h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+            {skillsList.map((s, i) => <span key={i} style={{ background: 'rgba(255,255,255,0.1)', padding: '1rem 2rem', borderRadius: '12px' }}>{s}</span>)}
+          </div>
+        </div>
+      );
+      case 'education': return (
+        <div>
+          <h3 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t('bento.education.title')}</h3>
+          <div style={{ borderLeft: '4px solid var(--accent-purple)', paddingLeft: '2rem' }}>
+            <h4 style={{ fontSize: '1.8rem', color: 'var(--accent-cyan)' }}>{t('bento.education.degree1')}</h4>
+            <p>{t('bento.education.uni')} | {t('bento.education.date1')}</p>
+            <hr style={{ border: 'none', borderTop: '1px solid var(--glass-border)', margin: '2rem 0' }} />
+            <h4 style={{ fontSize: '1.8rem' }}>{t('bento.education.degree2')}</h4>
+            <p>{t('bento.education.uni')} | {t('bento.education.date2')}</p>
+          </div>
+        </div>
+      );
+      case 'vecode_vid_1': return <img src="/assets/projects/vecode/old_auth.png" style={{ width: '100%', borderRadius: '20px' }} />;
+      case 'vecode_vid_2': return <img src="/assets/projects/vecode/new_dashboard.png" style={{ width: '100%', borderRadius: '20px' }} />;
+      case 'stealth_vid_1': return <img src="/assets/projects/stealth/stealth_draft.png" style={{ width: '100%', borderRadius: '20px' }} />;
+      case 'stealth_vid_2': return <img src="/assets/projects/stealth/stealth_drone.png" style={{ width: '100%', borderRadius: '20px' }} />;
+      default: return <div style={{ color: 'white' }}>Contenido en detalle para {id} próximamente...</div>;
+    }
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(t('bento.contact.email'));
+    alert('Correo copiado al portapapeles');
+  };
 
   return (
     <>
       <Controls />
+      
+      <AnimatePresence>
+        {expandedId && (
+          <motion.div 
+            className="overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setExpandedId(null)}
+          >
+            <motion.div 
+              layoutId={expandedId}
+              className="expanded-card"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setExpandedId(null)}
+                style={{ position: 'absolute', top: '2rem', right: '2rem', padding: '0.5rem 1rem' }}
+              >
+                Cerrar Esc
+              </button>
+              {/* Simplified Modal Content */}
+              <div style={{ padding: '1rem' }}>
+                 <div style={{ fontSize: '0.9rem', color: 'var(--accent-cyan)', marginBottom: '1rem' }}>MODO ENFOQUE</div>
+                 {renderExpandedContent(expandedId)}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* 3D Background */}
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vw', maxHeight: '100vh', zIndex: -1, pointerEvents: 'none', opacity: 0.6 }}>
@@ -101,7 +179,7 @@ function PortfolioContent() {
       <div className="bento-container">
         
         {/* HERO CARD (Master of Engineering) */}
-        <BentoCard className="col-span-6" delay={0.1}>
+        <BentoCard id="hero" onExpand={setExpandedId} className="col-span-6" delay={0.1}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', zIndex: 2 }}>
             <span style={{ color: 'var(--accent-cyan)', fontWeight: 600, letterSpacing: '3px', fontSize: '0.9rem' }}>{t('bento.hero.greeting').toUpperCase()}</span>
             <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', marginBottom: 0, fontWeight: 900, lineHeight: 1 }}>
@@ -121,8 +199,8 @@ function PortfolioContent() {
           </div>
         </BentoCard>
 
-        {/* SKILLS (Tech Ecosystem) */}
-        <BentoCard className="col-span-6 row-span-2" delay={0.2}>
+        {/* SKILLS (Tech Ecosystem) - REMOVED row-span-2 to fix gap */}
+        <BentoCard id="skills" onExpand={setExpandedId} className="col-span-6" delay={0.2}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
             <div style={{ background: 'rgba(56, 189, 248, 0.1)', padding: '0.8rem', borderRadius: '12px' }}>
               <Code2 color="var(--accent-cyan)" size={28} />
@@ -152,7 +230,7 @@ function PortfolioContent() {
         </BentoCard>
 
         {/* EDUCATION (Advanced Engineering) */}
-        <BentoCard className="col-span-6" delay={0.3}>
+        <BentoCard id="education" onExpand={setExpandedId} className="col-span-6" delay={0.3}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
             <GraduationCap color="var(--accent-purple)" size={28} />
             <h3 style={{ margin: 0, fontSize: '1.8rem', fontWeight: 800 }}>{t('bento.education.title')}</h3>
@@ -176,7 +254,7 @@ function PortfolioContent() {
         </BentoCard>
 
         {/* MOBILITY & LANGUAGES (25/25 split) */}
-        <BentoCard className="col-span-3" delay={0.4}>
+        <BentoCard id="mobility" onExpand={setExpandedId} className="col-span-3" delay={0.4}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
             <Plane color="var(--accent-cyan)" size={24} />
             <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{t('bento.mobility.title')}</h3>
@@ -195,7 +273,7 @@ function PortfolioContent() {
           </ul>
         </BentoCard>
 
-        <BentoCard className="col-span-3" delay={0.5}>
+        <BentoCard id="languages" onExpand={setExpandedId} className="col-span-3" delay={0.5}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
             <Globe color="var(--accent-purple)" size={24} />
             <h3 style={{ margin: 0, fontSize: '1.4rem' }}>{t('bento.languages.title')}</h3>
@@ -227,12 +305,12 @@ function PortfolioContent() {
               <p style={{ fontSize: '1.2rem', fontStyle: 'italic', opacity: 0.9, marginBottom: '3rem', lineHeight: 1.8, maxWidth: '1000px' }}>{t('bento.case_studies.vecode.context')}</p>
               
               <div className="comparison-grid" style={{ marginBottom: '4rem' }}>
-                <div className="visual-item" style={{ border: '2px solid #722f37' }}>
-                  <img src="/assets/projects/vecode/old_auth.png" alt="Legacy" style={{ height: '400px' }} />
+                <div className="visual-item" onClick={() => setExpandedId('vecode_vid_1')} style={{ border: '2px solid #722f37', cursor: 'zoom-in' }}>
+                  <motion.img layoutId="vecode_vid_1" src="/assets/projects/vecode/old_auth.png" alt="Legacy" style={{ height: '400px' }} />
                   <span className="visual-label" style={{ background: '#722f37', color: 'white' }}>{t('bento.case_studies.vecode.visuals.before')}</span>
                 </div>
-                <div className="visual-item" style={{ border: '2px solid var(--accent-cyan)' }}>
-                  <img src="/assets/projects/vecode/new_dashboard.png" alt="Modern" style={{ height: '400px' }} />
+                <div className="visual-item" onClick={() => setExpandedId('vecode_vid_2')} style={{ border: '2px solid var(--accent-cyan)', cursor: 'zoom-in' }}>
+                  <motion.img layoutId="vecode_vid_2" src="/assets/projects/vecode/new_dashboard.png" alt="Modern" style={{ height: '400px' }} />
                   <span className="visual-label" style={{ background: 'var(--accent-cyan)', color: 'black' }}>{t('bento.case_studies.vecode.visuals.after')}</span>
                 </div>
               </div>
@@ -258,12 +336,12 @@ function PortfolioContent() {
               <p style={{ fontSize: '1.2rem', fontStyle: 'italic', opacity: 0.9, marginBottom: '3rem', lineHeight: 1.8, maxWidth: '1000px' }}>{t('bento.case_studies.stealth.context')}</p>
 
               <div className="comparison-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', marginBottom: '4rem' }}>
-                <div className="visual-item" style={{ border: '1px solid var(--accent-purple)' }}>
-                  <img src="/assets/projects/stealth/stealth_drone.png" alt="Drone Pilot" style={{ height: '450px' }} />
+                <div className="visual-item" onClick={() => setExpandedId('stealth_vid_2')} style={{ border: '1px solid var(--accent-purple)', cursor: 'zoom-in' }}>
+                  <motion.img layoutId="stealth_vid_2" src="/assets/projects/stealth/stealth_drone.png" alt="Drone Pilot" style={{ height: '450px' }} />
                   <span className="visual-label" style={{ background: 'var(--accent-purple)', color: 'white' }}>{t('bento.case_studies.stealth.visuals.screen2')}</span>
                 </div>
-                <div className="visual-item" style={{ border: '1px solid var(--accent-purple)' }}>
-                  <img src="/assets/projects/stealth/stealth_draft.png" alt="Draft Analysis" style={{ height: '450px' }} />
+                <div className="visual-item" onClick={() => setExpandedId('stealth_vid_1')} style={{ border: '1px solid var(--accent-purple)', cursor: 'zoom-in' }}>
+                  <motion.img layoutId="stealth_vid_1" src="/assets/projects/stealth/stealth_draft.png" alt="Draft Analysis" style={{ height: '450px' }} />
                   <span className="visual-label" style={{ background: 'var(--accent-purple)', color: 'white' }}>{t('bento.case_studies.stealth.visuals.screen1')}</span>
                 </div>
               </div>
@@ -292,39 +370,28 @@ function PortfolioContent() {
           </BentoCard>
         </div>
 
-        {/* BENTO FOOTER (Contact & Network) */}
-        <BentoCard className="col-span-8" delay={0.7} style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.05))', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
-          <div style={{ textAlign: 'center', maxWidth: '800px' }}>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem', fontWeight: 900, lineHeight: 1.1 }}>{t('bento.contact.title')}</h2>
-            <p style={{ fontSize: '1.4rem', color: 'var(--text-secondary)', marginBottom: '3rem' }}>Escalando productos de logística industrial con ingeniería de precisión.</p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-              <a href={`mailto:${t('bento.contact.email')}`} style={{ background: 'var(--accent-cyan)', color: 'black', padding: '1rem 2.5rem', borderRadius: '50px', fontWeight: 800, fontSize: '1.1rem', transition: 'all 0.3s ease', transform: 'scale(1)', boxShadow: '0 10px 20px rgba(56, 189, 248, 0.3)' }}>
-                Email Me Direct
-              </a>
-              <a href={`tel:${t('bento.contact.phone')}`} style={{ background: 'rgba(255,255,255,0.1)', color: 'white', padding: '1rem 2.5rem', borderRadius: '50px', fontWeight: 700, fontSize: '1.1rem', border: '1px solid var(--glass-border)' }}>
-                WhatsApp Direct
-              </a>
+        {/* BENTO FOOTER (Contact Redesign) */}
+        <BentoCard className="col-span-12" delay={0.7} style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(6, 6, 18, 0.9))', minHeight: '400px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', width: '100%', alignItems: 'center' }}>
+            <div>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem', fontWeight: 900, lineHeight: 1.1 }}>{t('bento.contact.title')}</h2>
+              <p style={{ fontSize: '1.4rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>Soluciones críticas de software y algoritmos de visión autónoma para la industria global.</p>
             </div>
-          </div>
-        </BentoCard>
-
-        <BentoCard className="col-span-4" delay={0.8} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1.5rem' }}>
-          <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.5rem' }}>Networking</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <a href="https://linkedin.com/in/jose-jesus-maldonado" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1.5rem', borderRadius: '24px', border: '1px solid var(--glass-border)', transition: 'all 0.3s ease' }}>
-              <div style={{ background: '#0077b5', padding: '0.5rem', borderRadius: '8px', display: 'flex' }}><Globe size={20} color="white" /></div>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>LinkedIn</div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Profesional Network</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              <div style={{ background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '32px', border: '1px solid var(--glass-border)' }}>
+                <div style={{ color: 'var(--accent-cyan)', fontWeight: 600, marginBottom: '0.5rem', fontSize: '0.9rem', letterSpacing: '1px' }}>EMAIL EMPRESARIAL</div>
+                <div onClick={copyEmail} style={{ fontSize: 'clamp(1.2rem, 3vw, 1.8rem)', fontWeight: 700, color: 'white', cursor: 'copy', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  {t('bento.contact.email')}
+                  <div style={{ background: 'rgba(255,255,255,1)', color: 'black', padding: '0.4rem 1rem', borderRadius: '50px', fontSize: '0.8rem' }}>Copiar</div>
+                </div>
               </div>
-            </a>
-            <a href="https://github.com/JoseMaldonado" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '1.5rem', borderRadius: '24px', border: '1px solid var(--glass-border)', transition: 'all 0.3s ease' }}>
-              <div style={{ background: '#333', padding: '0.5rem', borderRadius: '8px', display: 'flex' }}><Code2 size={20} color="white" /></div>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>GitHub</div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Technical Portfolio</div>
+              <div style={{ background: 'rgba(56, 189, 248, 0.1)', padding: '2rem', borderRadius: '32px', border: '1px solid rgba(56, 189, 248, 0.2)' }}>
+                <div style={{ color: 'var(--accent-purple)', fontWeight: 600, marginBottom: '0.5rem', fontSize: '0.9rem', letterSpacing: '1px' }}>WHATSAPP DIRECTO</div>
+                <a href={`tel:${t('bento.contact.phone')}`} style={{ fontSize: 'clamp(1.2rem, 3vw, 1.8rem)', fontWeight: 700, color: 'white', textDecoration: 'none' }}>
+                  {t('bento.contact.phone')}
+                </a>
               </div>
-            </a>
+            </div>
           </div>
         </BentoCard>
 

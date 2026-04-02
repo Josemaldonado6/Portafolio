@@ -134,6 +134,44 @@ h1, h2, h3, h4 {
 .col-span-1 { grid-column: span 1 / span 1; }
 .row-span-2 { grid-row: span 2 / span 2; }
 
+/* Grid polish - ensure it feels 'filled' */
+.bento-container {
+  grid-auto-flow: dense;
+}
+
+/* Expansion Overlays */
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+.expanded-card {
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  padding: 4rem;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 1);
+  cursor: default;
+}
+
+.expanded-card h1, .expanded-card h2, .expanded-card h3 {
+  letter-spacing: -0.02em;
+}
+
 @media (max-width: 1200px) {
   .col-span-4, .col-span-3, .col-span-2, .col-span-1 { grid-column: span 6 / span 6; }
 }
