@@ -1,37 +1,92 @@
 {
-  "hero": {
-    "title": "José de Jesús Maldonado Ordaz",
-    "role": "Ingeniero en Desarrollo y Gestión de Software",
-    "location": "Coatzacoalcos, Veracruz, México",
-    "availability": "Disponibilidad Inmediata - Dispuesto a Reubicarse"
-  },
-  "about": {
-    "title": "Sobre mí",
-    "description": "Soy Ingeniero en Desarrollo y Gestión de Software, especializado en la creación de soluciones Web escalables de alto rendimiento y el desarrollo de IA. Cuento con visa americana y pasaporte, siempre preparado para movilidad internacional."
-  },
-  "experience": {
-    "title": "Experiencia Profesional",
-    "vecode": {
-      "name": "Vecode — Plataforma de Operaciones Portuarias e Industriales",
-      "company": "Pro-Agroindustria",
-      "date": "Enero – Abril 2026",
-      "subtitle": "Evolución de Sistema Legado",
-      "legacyDesc": "Sustitución estratégica de un sistema frágil en PHP puro sin arquitectura y con alto riesgo operativo, por una plataforma tecnológica sólida a nivel empresarial.",
-      "achievements": [
-        "Arquitectura Full-Stack Moderna desde cero desarrollada con Laravel 11 (PHP 8.2), sistema de permisos Spatie, workers asíncronos y un pipeline CI/CD en GitHub Actions para despliegue automático cero-downtime a Hostinger.",
-        "Frontend responsivo construido con React 18, TypeScript e Inertia.js, logrando una renderización estilo SPA sin sacrificar ruteo integrado.",
-        "Modelado de Dominio Complejo: orquestación de flujos de buques (ECO/WHISKY), procesos de báscula dual, y operaciones atómicas de burreo con almacén externo que condensan 4 pasos manuales en uno.",
-        "Separación de Datos Crítica: Aislamiento arquitectónico de procesos comerciales frente a operativos, previniendo cuellos de botella y resolviendo el choque de secuencias heredado.",
-        "Soluciones Algorítmicas: Verificación proactiva de colisiones de muelle, y algoritmos de cuadratura matemática estricta (±0.1 TM) para las bodegas.",
-        "Dashboard con Drill-Down interactivo en 3 niveles, brindando métricas analíticas exportables en tiempo real sobre las unidades en circuito.",
-        "Base de Datos: Diseño de esquema relacional con 88 migraciones estratégicas en MySQL, incluyendo trazabilidad de auditoría unificada y una estrategia algorítmica de 'Shadow Folio'."
-      ],
-      "impact": "Erradicación absoluta de errores manuales operativos, consolidación de la trazabilidad desde báscula hasta vigilancia, y bloqueo sistemático para el cumplimiento estricto del tonelaje comercial."
+  "bento": {
+    "hero": {
+      "greeting": "Hola, soy",
+      "name": "José de Jesús Maldonado Ordaz",
+      "role": "Ingeniero en Desarrollo y Gestión de Software",
+      "status": "Por titularme"
+    },
+    "about": {
+      "title": "Sobre Mí",
+      "location": "Coatzacoalcos, Veracruz, México."
+    },
+    "mobility": {
+      "title": "Movilidad Global",
+      "availability": "Disponibilidad Inmediata",
+      "relocation": "Dispuesto a reubicación internacional",
+      "visa": "Visa B1/B2 (USA) Activa",
+      "passport": "Pasaporte Mexicano Activo"
+    },
+    "languages": {
+      "title": "Idiomas",
+      "es": "Español (Nativo)",
+      "en": "Inglés (Conversacional B2 / Lectura Técnica)"
+    },
+    "education": {
+      "title": "Educación Tecnológica",
+      "uni": "Universidad Tecnológica del Sureste de Veracruz",
+      "degree1": "Ingeniería en Desarrollo de Software",
+      "date1": "Ago 2024 - Abr 2026",
+      "degree2": "TSU Desarrollo Multiplataforma",
+      "date2": "Ago 2022 - Ago 2024"
+    },
+    "skills": {
+      "title": "Dominio Tecnológico",
+      "list": [
+        "TypeScript", "React 18", "Laravel 11", "AWS", 
+        "Google Cloud", "GitHub CI/CD", 
+        "Data Synth & LLMs", "Integración IA (YOLO/SAM)", 
+        "Hardware-Software Edge", "Product Management"
+      ]
+    },
+    "contact": {
+      "title": "Impulsando el Futuro del Software.",
+      "phone": "+52 9211002299",
+      "email": "joseutsv@gmail.com"
+    },
+    "case_studies": {
+      "title": "Proyectos & Experiencia Profesional",
+      "stealth": {
+        "name": "Startup Deep Tech en Modo Oculto (Stealth)",
+        "role": "Fundador e Ingeniero Principal",
+        "company": "Plataforma Autónoma de Inspección Marítima (Confidencial)",
+        "date": "Fundada en 2025 – Presente",
+        "context": "El Origen: Este proyecto nació durante una reunión operativa portuaria al detectar que la certificación de peso de buques (Draft Survey) es un proceso centenario, manual y de extremo riesgo vital/financiero. Fundé la startup para reemplazar este proceso totalmente con un flujo autónomo de IA y drones de precisión sub-centimétrica en segundos.",
+        "p1_title": "🧠 Motor de Visión Computacional e IA",
+        "p1_desc": "Diseñé un pipeline integrando redes neuronales (Detección de Objetos, Segmentación de Instancias, OCR Industrial) para procesar marcas de calado bajo óxido y oleaje. Desarrollé el núcleo IP: un algoritmo basado en física con transformadas matemáticas que reconstruye de forma autónoma el 'Nivel Verdadero de Agua'. Entrené el modelo creando datos sintéticos mediante IA Generativa.",
+        "p2_title": "⚙️ Backend, API y Edge Computing",
+        "p2_desc": "Arquitectura modular asíncrona: orquestación de inspecciones, modelado físico, generación PDF fotorrealista evidencial y telemetría OSINT. Implementé una estrategia de datos 'offline-first' y sincronización híbrida (Edge-Cloud) contenerizando todo el stack técnico.",
+        "p3_title": "🖥️ Frontend y Diseño UI/UX",
+        "p3_desc": "Desarrollo completo como SPA transicional/PWA con herramientas de telemetría en tiempo real, ingesta drag-and-drop de drones y un mapa digital portuario, optimizado para tablets a bordo.",
+        "p4_title": "📦 Estrategia y Negocio",
+        "p4_desc": "Modelado B2B SaaS Enterprise, proyecciones TAM/SAM/SOM y rutas de certificación técnica (DNV). Mi diferenciador es poseer fluidez del dominio logístico naviero combinada con la capacidad comprobada de ingeniería Full-Stack de alto estrés.",
+        "expertise_table": {
+          "title": "Áreas de Experiencia Demostradas",
+          "headers": ["Dominio", "Capacidades Evaluables"],
+          "rows": [
+            { "domain": "Ingeniería de IA / Visión", "capabilities": "Entrenamiento de modelos de Detección de Objetos, Segmentación de Instancias, OCR Industrial, Visión Artificial, Generación de Data Sintética." },
+            { "domain": "Procesamiento y Analítica", "capabilities": "Algoritmos estadísticos, cancelación de ruido en señales de video, validación de variables físicas temporales." },
+            { "domain": "Ingeniería Backend", "capabilities": "Arquitecturas empresariales asíncronas, ORMs relacionales, Múltiples Migraciones, Diseño de REST APIs robustas y APIs Seguras (JWT)." },
+            { "domain": "Ingeniería Frontend", "capabilities": "Arquitectura SPA/Frameworks Modernos Reactivos, PWA Offline-First, i18n, Interfaces UI/UX Dinámicas e interactivas." },
+            { "domain": "Infraestructura", "capabilities": "Contenerización, Despliegues inmutables, Pipelines CI/CD, Edge-Cloud Hybrid Architecture." },
+            { "domain": "Gestión de Producto", "capabilities": "Product Strategy, Diseño de Roadmap Multianual, Estrategias Monetización, Modelado de Mercados (TAM/SOM)." },
+            { "domain": "Visión Estratégica / Negocio", "capabilities": "Modelado B2B SaaS Corporativo, Propiedad Intelectual, Arquitectura Organizacional de Pitch y Tracción." }
+          ]
+        }
+      },
+      "vecode": {
+        "name": "Vecode",
+        "role": "Ingeniero Backend & Frontend (Full-Stack)",
+        "company": "Pro-Agroindustria",
+        "date": "Enero - Abril 2026",
+        "context": "Heredando un Sistema Legado: Llegué para reemplazar un sistema operativo monolítico crítico construido en PHP plano procedimental comercial (+110 archivos) que gestionaba básculas, órdenes de carga y logística de inventario, el cual sufría latencias inaceptables.",
+        "p1_title": "⚡ Backend & Arquitectura Moderna",
+        "p1_desc": "Diseñé una API REST moderna con Laravel 11. Implementé MVC estricto, sistema de roles/permisos, validaciones de Requests personalizadas y abstracción profunda con Eloquent ORM. Pasamos de un código espagueti con inyecciones SQL a una arquitectura mantenible y segura.",
+        "p2_title": "🚀 Frontend y Experiencia de Usuario",
+        "p2_desc": "Construí el frontend como una Single Page Application con React 18, Vite e Inertia.js usando TailwindCSS. Implementamos estados globales limpios eliminando por completo las múltiples recargas de página del sistema anterior.",
+        "p3_title": "🛠️ Infraestructura CI/CD y DevOps",
+        "p3_desc": "Eliminé el viejo flujo inseguro de carga cPanel/FTP por una arquitectura de Ubuntu Local con CloudPanel. Diseñé un pipeline robusto en GitHub Actions automatizando testing y despliegue continuo al hacer push a la rama principal, reduciendo los costos de operación y tiempos de carga a la mitad."
+      }
     }
-  },
-  "contact": {
-    "title": "Contacto",
-    "email": "Escríbeme: joseutsv@gmail.com",
-    "phone": "Llámame: +52 9211002299"
   }
 }
