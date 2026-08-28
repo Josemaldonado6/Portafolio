@@ -96,6 +96,8 @@ function PortfolioContent() {
           </div>
         </div>
       );
+      case 'visionmesh_vid_1': return <img src="/assets/projects/visionmesh/console.png" style={{ width: '100%', borderRadius: '20px' }} />;
+      case 'visionmesh_vid_2': return <img src="/assets/projects/visionmesh/tickets.png" style={{ width: '100%', borderRadius: '20px' }} />;
       case 'vecode_vid_1': return <img src="/assets/projects/vecode/old_auth.png" style={{ width: '100%', borderRadius: '20px' }} />;
       case 'vecode_vid_2': return <img src="/assets/projects/vecode/new_dashboard.png" style={{ width: '100%', borderRadius: '20px' }} />;
       case 'stealth_vid_1': return <img src="/assets/projects/stealth/stealth_draft.png" style={{ width: '100%', borderRadius: '20px' }} />;
@@ -294,6 +296,37 @@ function PortfolioContent() {
             <Briefcase color="var(--accent-cyan)" size={32} />
             <h3 style={{ fontSize: '2.5rem', fontWeight: 800 }}>{t('bento.case_studies.title')}</h3>
           </div>
+
+          {/* VISIONMESH CASE STUDY */}
+          <BentoCard delay={0.05} className="col-span-12" style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(6, 6, 18, 0.95))' }}>
+            <div style={{ borderLeft: '4px solid var(--accent-cyan)', paddingLeft: '2rem' }}>
+              <h4 style={{ fontSize: '2.4rem', marginBottom: '0.8rem' }}>{t('bento.case_studies.visionmesh.name')}</h4>
+              <div style={{ fontSize: '1.3rem', color: 'var(--accent-cyan)', fontWeight: 600, marginBottom: '0.5rem' }}>{t('bento.case_studies.visionmesh.role')}</div>
+              <div style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem' }}>{t('bento.case_studies.visionmesh.company')} • {t('bento.case_studies.visionmesh.date')}</div>
+              
+              <p style={{ fontSize: '1.2rem', fontStyle: 'italic', opacity: 0.9, marginBottom: '3rem', lineHeight: 1.8, maxWidth: '1000px' }}>{t('bento.case_studies.visionmesh.context')}</p>
+              
+              <div className="comparison-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', marginBottom: '4rem' }}>
+                <div className="visual-item" onClick={() => setExpandedId('visionmesh_vid_1')} style={{ border: '1px solid var(--accent-cyan)', cursor: 'zoom-in' }}>
+                  <motion.img layoutId="visionmesh_vid_1" src="/assets/projects/visionmesh/console.png" alt="VisionMesh Console" style={{ height: '400px', objectFit: 'contain', background: '#02020a' }} />
+                  <span className="visual-label" style={{ background: 'var(--accent-cyan)', color: 'black' }}>{t('bento.case_studies.visionmesh.visuals.console')}</span>
+                </div>
+                <div className="visual-item" onClick={() => setExpandedId('visionmesh_vid_2')} style={{ border: '1px solid var(--accent-cyan)', cursor: 'zoom-in' }}>
+                  <motion.img layoutId="visionmesh_vid_2" src="/assets/projects/visionmesh/tickets.png" alt="VisionMesh Tickets" style={{ height: '400px', objectFit: 'contain', background: '#02020a' }} />
+                  <span className="visual-label" style={{ background: 'var(--accent-cyan)', color: 'black' }}>{t('bento.case_studies.visionmesh.visuals.tickets')}</span>
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
+                {[1,2,3].map(i => (
+                  <div key={i}>
+                    <h5 style={{ color: 'var(--accent-cyan)', fontSize: '1.3rem', marginBottom: '1rem' }}>{t(`bento.case_studies.visionmesh.p${i}_title`)}</h5>
+                    <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.8 }}>{t(`bento.case_studies.visionmesh.p${i}_desc`)}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </BentoCard>
 
           {/* VECODE CASE STUDY */}
           <BentoCard delay={0.1} className="col-span-12">

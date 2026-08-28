@@ -33,10 +33,10 @@
     "skills": {
       "title": "Ecosistema Tecnológico",
       "list": [
-        "TypeScript", "React 18", "Laravel 11", "AWS Cloud", 
-        "Google Cloud Platform", "GitHub Actions CI/CD", 
+        "TypeScript", "React 18", "Laravel 11", "Tauri & Rust", "AWS Cloud", 
+        "Supabase / PostgreSQL", "GitHub Actions CI/CD", 
         "Data Synthetic & LLMs", "IA Computer Vision (YOLO/SAM)", 
-        "Edge Computing Hardware", "Product Design Management"
+        "Edge Computing Hardware", "Serial RS232 IoT", "PWA & WebSockets"
       ]
     },
     "contact": {
@@ -46,6 +46,23 @@
     },
     "case_studies": {
       "title": "Hitos de Ingeniería y Casos de Estudio",
+      "visionmesh": {
+        "name": "VisionMesh / WeighOS — Plataforma Híbrida IoT & Pesaje Industrial",
+        "role": "Lead Software Architect & Full-Stack Developer",
+        "company": "Ecosistema IoT Industrial (Desktop Edge & PWA Cloud)",
+        "date": "2025 – Presente",
+        "context": "Plataforma tecnológica híbrida diseñada para digitalizar, automatizar y monitorear operaciones de pesaje industrial en básculas puente y plantas logísticas en tiempo real. Combina una App Desktop nativa en Tauri/Rust (Edge Node) conectada por puerto serial RS232/Ethernet con una PWA Móvil en la nube.",
+        "p1_title": "⚙️ Arquitectura Híbrida Offline-First & Rust Engine",
+        "p1_desc": "Diseño con SQLite local en Tauri/Rust que permite operar al 100% ante apagones o fallas de internet. Motor multihilo RS232/Ethernet capturando peso bruto y estabilidad a 60 FPS sin congelar la UI, con SyncWorker Engine asíncrono hacia Supabase.",
+        "p2_title": "📱 Monitoreo Remoto Dual (Desktop ⇄ PWA Móvil)",
+        "p2_desc": "PWA progresiva con WebSockets (Realtime Channels) para control e inspección remota desde smartphones, sincronizando lecturas y capturas de pesaje bidireccionalmente entre el teléfono del operador de campo y la PC de planta.",
+        "p3_title": "📸 Evidencia Visual & Automatización Omnicanal",
+        "p3_desc": "Integración de cámaras IP/RTSP para evidencia fotográfica en vivo vinculada a cada ticket. Generación automática de tiquetes digitales PDF entregados instantáneamente vía WhatsApp (Twilio API) y Correo Electrónico (Resend API).",
+        "visuals": {
+          "console": "Consola de Pesaje en Tiempo Real (Desktop)",
+          "tickets": "Historial de Pesajes & Reimpresión Térmica"
+        }
+      },
       "vecode": {
         "name": "Vecode — Re-Arquitectura Crítica Portuaria",
         "role": "Lead Full-Stack Engineer",

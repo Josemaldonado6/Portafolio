@@ -33,10 +33,10 @@
     "skills": {
       "title": "Technological Ecosystem",
       "list": [
-        "TypeScript", "React 18", "Laravel 11", "AWS Cloud", 
-        "Google Cloud Platform", "GitHub Actions CI/CD", 
+        "TypeScript", "React 18", "Laravel 11", "Tauri & Rust", "AWS Cloud", 
+        "Supabase / PostgreSQL", "GitHub Actions CI/CD", 
         "Data Synthetic & LLMs", "AI Computer Vision (YOLO/SAM)", 
-        "Edge Computing Hardware", "Product Design Management"
+        "Edge Computing Hardware", "Serial RS232 IoT", "PWA & WebSockets"
       ]
     },
     "contact": {
@@ -46,6 +46,23 @@
     },
     "case_studies": {
       "title": "Engineering Milestones & Case Studies",
+      "visionmesh": {
+        "name": "VisionMesh / WeighOS — Hybrid IoT Industrial Weighing Platform",
+        "role": "Lead Software Architect & Full-Stack Developer",
+        "company": "Industrial IoT Ecosystem (Desktop Edge & Cloud PWA)",
+        "date": "2025 – Present",
+        "context": "Hybrid technological platform engineered to digitize, automate, and monitor real-time industrial weighing operations across weighbridges and logistics plants. Blends a native Tauri/Rust desktop app (Edge Node) connected via RS232/Ethernet serial ports with a mobile cloud PWA.",
+        "p1_title": "⚙️ Offline-First Hybrid Architecture & Rust Engine",
+        "p1_desc": "SQLite embedded architecture managed via Tauri (Rust) enabling 100% plant uptime during network blackouts. Multithreaded Rust engine listening to RS232/Ethernet serial scales at 60 FPS with idempotent async background synchronization to Supabase (PostgreSQL).",
+        "p2_title": "📱 Dual Remote Control (Desktop ⇄ Mobile PWA)",
+        "p2_desc": "Progressive Web App with WebSockets (Realtime Channels) allowing field inspectors to monitor live scale weights and trigger remote captures in real-time from their smartphones.",
+        "p3_title": "📸 Visual Evidence & Omnichannel Automation",
+        "p3_desc": "Live RTSP/IP camera snapshot integration linked to every weighbridge entry/exit ticket. Automated digital PDF receipt generation with instant delivery via WhatsApp (Twilio API) and Email (Resend API).",
+        "visuals": {
+          "console": "Real-Time Weighing Console (Desktop Edge)",
+          "tickets": "Ticket History & Thermal Reprint System"
+        }
+      },
       "vecode": {
         "name": "Vecode — Critical Port Platform Re-Architecture",
         "role": "Lead Full-Stack Engineer",
