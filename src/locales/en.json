@@ -68,7 +68,7 @@
         "role": "Lead Full-Stack Engineer",
         "company": "Pro-Agroindustria",
         "date": "January - April 2026",
-        "context": "Radical Transformation: I inherited a critical operating infrastructure built in procedural PHP (a 110+ file monolith) with unacceptable latencies. I performed a from-scratch reconstruction in 4 months, migrating to a modern service-oriented architecture to guarantee real-time weighing and inventory.",
+        "context": "Radical Transformation: I inherited a critical operating infrastructure built in procedural PHP with unacceptable latencies. I performed a from-scratch reconstruction in 4 months, migrating to a modern service-oriented architecture to guarantee real-time weighing and inventory.",
         "p1_title": "High-Performance Architecture",
         "p1_desc": "Eliminated legacy 'Spaghetti Code' by architecting a robust REST API in Laravel 11. Implemented MVC patterns, advanced SQL injection security, and data abstraction via Eloquent ORM, achieving a scalable and maintainable system.",
         "p2_title": "Fluid SPA Experience",
