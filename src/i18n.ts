@@ -3,8 +3,6 @@ import { initReactI18next } from "react-i18next";
 import enTranslations from "./locales/en.json";
 import esTranslations from "./locales/es.json";
 
-const userLanguage = navigator.language.split('-')[0];
-
 i18n
   .use(initReactI18next)
   .init({
@@ -12,8 +10,8 @@ i18n
       en: { translation: enTranslations },
       es: { translation: esTranslations },
     },
-    lng: userLanguage === 'es' ? 'es' : 'en', 
-    fallbackLng: "en",
+    lng: "es", 
+    fallbackLng: "es",
     interpolation: {
       escapeValue: false, 
     },
