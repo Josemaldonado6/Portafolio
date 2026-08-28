@@ -161,12 +161,12 @@ function PortfolioContent() {
 
             <div style={{ display: 'flex', gap: '4rem' }}>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.2rem', color: 'var(--text-primary)' }}>{t('bento.languages.es').split('(')[0]}</div>
-                <div style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>{t('bento.languages.es').match(/\((.*)\)/)?.[1] || 'Nativo'}</div>
+                <div style={{ fontWeight: 700, fontSize: '1.2rem', color: 'var(--text-primary)' }}>{String(t('bento.languages.es') || '').split('(')[0] || 'Español'}</div>
+                <div style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>{String(t('bento.languages.es') || '').match(/\((.*)\)/)?.[1] || 'Nativo'}</div>
               </div>
               <div>
-                <div style={{ fontWeight: 700, fontSize: '1.2rem', color: 'var(--text-primary)' }}>{t('bento.languages.en').split('(')[0]}</div>
-                <div style={{ color: 'var(--accent-cyan)', fontSize: '1.1rem', fontWeight: 600 }}>{t('bento.languages.en').match(/\((.*)\)/)?.[1] || 'B2 Conversacional'}</div>
+                <div style={{ fontWeight: 700, fontSize: '1.2rem', color: 'var(--text-primary)' }}>{String(t('bento.languages.en') || '').split('(')[0] || 'English'}</div>
+                <div style={{ color: 'var(--accent-cyan)', fontSize: '1.1rem', fontWeight: 600 }}>{String(t('bento.languages.en') || '').match(/\((.*)\)/)?.[1] || 'B2 Conversacional'}</div>
               </div>
             </div>
           </BentoCard>

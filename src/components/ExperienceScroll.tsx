@@ -14,6 +14,8 @@ const CaseStudy = ({ project, index }: { project: any, index: number }) => {
   const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
   const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
 
+  if (!project || typeof project !== 'object') return null;
+
   return (
     <motion.div 
       ref={ref}
@@ -57,7 +59,7 @@ const CaseStudy = ({ project, index }: { project: any, index: number }) => {
         ) : (
           <div style={{ marginTop: '3rem', background: 'rgba(0,0,0,0.3)', borderRadius: '20px', padding: '2rem', border: '1px solid var(--glass-border)' }}>
              <h5 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--accent-purple)' }}>{project.expertise_table?.title || 'Expertise Applied'}</h5>
-             {project.expertise_table?.rows?.map((row: any, i: number) => (
+             {Array.isArray(project.expertise_table?.rows) && project.expertise_table.rows.map((row: any, i: number) => (
                 <div key={i} style={{ display: 'flex', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '1.5rem 0' }}>
                   <div style={{ width: '30%', fontWeight: 700, fontSize: '1.2rem', color: 'var(--text-primary)' }}>{row.domain}</div>
                   <div style={{ width: '70%', color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.6 }}>{row.capabilities}</div>

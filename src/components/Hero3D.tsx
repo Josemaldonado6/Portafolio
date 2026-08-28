@@ -115,7 +115,7 @@ export const Hero3D = () => {
           </motion.div>
           
           <h1 style={{ fontSize: 'clamp(4rem, 10vw, 8rem)', marginBottom: '1rem', fontWeight: 900, lineHeight: 0.9, letterSpacing: '-0.05em' }}>
-            {t('bento.hero.name', 'JOSÉ MALDONADO').split(' ').map((word, i) => (
+            {String(t('bento.hero.name', 'JOSÉ MALDONADO') || 'JOSÉ MALDONADO').split(' ').map((word, i) => (
               <span key={i} style={{ display: 'block' }}>{word}</span>
             ))}
           </h1>
