@@ -299,14 +299,14 @@ function PortfolioContent() {
 
           {/* VISIONMESH CASE STUDY */}
           <BentoCard delay={0.05} className="col-span-12" style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(6, 6, 18, 0.95))' }}>
-            <div style={{ borderLeft: '4px solid var(--accent-cyan)', paddingLeft: '2rem' }}>
+            <div className="case-study-inner" style={{ borderLeft: '4px solid var(--accent-cyan)', paddingLeft: '2rem' }}>
               <h4 style={{ fontSize: '2.4rem', marginBottom: '0.8rem' }}>{t('bento.case_studies.visionmesh.name')}</h4>
               <div style={{ fontSize: '1.3rem', color: 'var(--accent-cyan)', fontWeight: 600, marginBottom: '0.5rem' }}>{t('bento.case_studies.visionmesh.role')}</div>
               <div style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem' }}>{t('bento.case_studies.visionmesh.company')} • {t('bento.case_studies.visionmesh.date')}</div>
               
               <p style={{ fontSize: '1.2rem', fontStyle: 'italic', opacity: 0.9, marginBottom: '3rem', lineHeight: 1.8, maxWidth: '1000px' }}>{t('bento.case_studies.visionmesh.context')}</p>
               
-              <div className="comparison-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', marginBottom: '4rem' }}>
+              <div className="comparison-grid" style={{ marginBottom: '4rem' }}>
                 <div className="visual-item" onClick={() => setExpandedId('visionmesh_vid_1')} style={{ border: '1px solid var(--accent-cyan)', cursor: 'zoom-in' }}>
                   <motion.img layoutId="visionmesh_vid_1" src="/assets/projects/visionmesh/console.png" alt="VisionMesh Console" style={{ height: '400px', objectFit: 'contain', background: '#02020a' }} />
                   <span className="visual-label" style={{ background: 'var(--accent-cyan)', color: 'black' }}>{t('bento.case_studies.visionmesh.visuals.console')}</span>
@@ -330,7 +330,7 @@ function PortfolioContent() {
 
           {/* VECODE CASE STUDY */}
           <BentoCard delay={0.1} className="col-span-12">
-            <div style={{ borderLeft: '4px solid var(--accent-cyan)', paddingLeft: '2rem' }}>
+            <div className="case-study-inner" style={{ borderLeft: '4px solid var(--accent-cyan)', paddingLeft: '2rem' }}>
               <h4 style={{ fontSize: '2.4rem', marginBottom: '0.8rem' }}>{t('bento.case_studies.vecode.name')}</h4>
               <div style={{ fontSize: '1.3rem', color: 'var(--accent-purple)', fontWeight: 600, marginBottom: '0.5rem' }}>{t('bento.case_studies.vecode.role')}</div>
               <div style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem' }}>{t('bento.case_studies.vecode.company')} • {t('bento.case_studies.vecode.date')}</div>
@@ -361,7 +361,7 @@ function PortfolioContent() {
 
           {/* STEALTH TECH CASE STUDY */}
           <BentoCard delay={0.2} className="col-span-12" style={{ background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(6, 6, 18, 0.95))' }}>
-            <div style={{ borderLeft: '4px solid var(--accent-purple)', paddingLeft: '2rem' }}>
+            <div className="case-study-inner" style={{ borderLeft: '4px solid var(--accent-purple)', paddingLeft: '2rem' }}>
               <h4 style={{ fontSize: '2.4rem', marginBottom: '0.8rem' }}>{t('bento.case_studies.stealth.name')}</h4>
               <div style={{ fontSize: '1.3rem', color: 'var(--accent-cyan)', fontWeight: 600, marginBottom: '0.5rem' }}>{t('bento.case_studies.stealth.role')}</div>
               <div style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem' }}>{t('bento.case_studies.stealth.company')} • {t('bento.case_studies.stealth.date')}</div>
