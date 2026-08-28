@@ -80,7 +80,7 @@ export const Hero3D = () => {
   return (
     <section className="section" style={{ padding: 0, justifyContent: 'center' }}>
       {/* 3D Background */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
         <Canvas camera={{ position: [0, 0, 10], fov: 45 }} gl={{ powerPreference: 'high-performance', antialias: true }}>
           <Suspense fallback={null}>
             <Environment preset="night" />
